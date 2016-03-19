@@ -12,7 +12,6 @@ RUN ./steamcmd.sh +login anonymous +force_install_dir ../csgo +app_update 740  +
 
 WORKDIR /steam/csgo/
 
-ADD start.sh .
 ADD download.sh .
 RUN ./download.sh
 
@@ -23,3 +22,9 @@ ADD metamod.vdf csgo/
 
 ADD http://warmod.bitbucket.org/plugins/warmod.smx csgo/addons/sourcemod/plugins/
 
+ADD start.sh .
+USER root
+ADD cfg csgo/cfg
+RUN chown steam:steam csgo/addons/sourcemod/plugins/warmod.smx
+RUN chown  -R steam:steam csgo/cfg/
+USER steam
