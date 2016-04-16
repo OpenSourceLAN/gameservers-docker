@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+if [[ -z $SERVER_NUM ]]
+then 
+  echo "SERVER_NUM not set"
+  exit 1
+fi
+
+if [[ -z $NETWORK ]]
+then
+  echo "NETWORK not set - we need an ipvlan or macvlan docker network to give LAN broadcast access"
+  exit 1
+fi 
+
+mkdir -p gamedata/server$SERVER_NUM/var
+mkdir -p gamedata/server$SERVER_NUM/config
+
+cp autoexec.cfg gamedata/server$SERVER_NUM/config/
+sed -i  "s/SERVER_NUM/$SERVER_NUM/" gamedata/server$SERVER_NUM/config/autoexec.cfg
+
+
+docker run -it --net=network --restart=unless-stopped -v `pwd`/gamedata/server$SERVER_NUM/config:/tron/server/config -v `pwd`/gamedata/server$SERVER_NUM/var:/tron/server/var tron
