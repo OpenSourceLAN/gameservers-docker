@@ -17,13 +17,13 @@ fi
 if [ -n $SOURCETV_ADDR ]
 then
    echo "tv_title $HOSTNAME" > csgo/cfg/hostname.cfg 
-   ./srcds_run -game csgo -console -tickrate 128 -maxplayers 64 +tv_relay $SOURCETV_ADDRESS $OTHER_ARGS
+   exec ./srcds_run -game csgo -console -tickrate 128 -maxplayers 64 +tv_relay $SOURCETV_ADDRESS $OTHER_ARGS
 
 else
 
    echo "hostname $HOSTNAME" > csgo/cfg/hostname.cfg 
 
-   ./srcds_run -game csgo +sv_lan $LAN -ip 0.0.0.0 +map $MAP -maxplayers 12 -usercon -exec hostname.cfg +game_type 0 +game_mode 1 -tickrate 128 -maxplayers_override 12 $OTHER_ARGS 
+   exec ./srcds_run -game csgo +sv_lan $LAN -ip 0.0.0.0 +map $MAP -maxplayers 12 -usercon -exec hostname.cfg +game_type 0 +game_mode 1 -tickrate 128 -maxplayers_override 12 $OTHER_ARGS 
 
 
 fi

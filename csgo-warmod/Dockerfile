@@ -1,7 +1,9 @@
 FROM csgo
 
 WORKDIR /steam/csgo/
-
+USER root
+RUN apt-get install -y curl 
+USER steam
 ADD download.sh .
 RUN ./download.sh
 

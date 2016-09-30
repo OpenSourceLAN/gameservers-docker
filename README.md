@@ -69,6 +69,7 @@ Make sure to hard code an IP for it.
 * If not using a secured docker registry, also add to the `DOCKER_OPTS` value: `--insecure-registry=registry-hostname:5000`
 * Consul, docker node and docker masters can all be on the same host (I think - it works for me at least)
 * To get a container to failover between hosts in the case of an outage, you need to run the container with these args: ` -e reschedule:on-node-failure`
+(todo: figure out why the container doesn't get auto-started on the new host)
 
 ### Setting up multiple consul hosts
 
