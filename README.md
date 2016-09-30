@@ -50,3 +50,57 @@ docker run -it --rm --net=gameservers csgo /steam/csgo/srcds_run -game csgo +sv_
 ```
 
 You can now see the CSGO server from another server on your network.
+
+
+## Running game servers on Docker Swarm
+
+[These are the instructions for building a swarm](https://docs.docker.com/swarm/install-manual/).
+
+In addition to the swarm, one also needs a docker registry (I think). 
+
+These are the following gotchas that you need to be aware of:
+
+* If using ipvlan, you need _experimental_, not main release docker (as at version 1.12)
+* The tutorial only has you set up a single consul instance. It will change IP addresses
+every time the container restarts, and this will cause consul to fail because it cannot
+elect itself leader, since it thinks another instance exists at a different IP address.
+Make sure to hard code an IP for it.
+* Using ubuntu 14.04, you'll need to update `/etc/defaults/docker` to contain: `DOCKER_OPTS="-H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock"`
+* If not using a secured docker registry, also add to the `DOCKER_OPTS` value: `--insecure-registry=registry-hostname:5000`
+* Consul, docker node and docker masters can all be on the same host (I think - it works for me at least)
+* To get a container to failover between hosts in the case of an outage, you need to run the container with these args: ` -e reschedule:on-node-failure`
+
+### Setting up multiple consul hosts
+
+Run the master like this:
+
+```
+docker run -d  -v /mnt:/data --name consul \
+    -p 8300:8300 \
+    -p 8301:8301 \
+    -p 8301:8301/udp \
+    -p 8302:8302 \
+    -p 8302:8302/udp \
+    -p 8400:8400 \
+    -p 8500:8500 \
+    -p 53:53/udp \
+    progrium/consul -server -advertise 10.0.0.167 -bootstrap-expect 3
+```
+
+and the other two like this:
+```
+    docker run -d -v /mnt:/data --name consul \
+    -p 8300:8300 \
+    -p 8301:8301 \
+    -p 8301:8301/udp \
+    -p 8302:8302 \
+    -p 8302:8302/udp \
+    -p 8400:8400 \
+    -p 8500:8500 \
+    -p 53:53/udp \
+    progrium/consul -server -advertise 10.0.0.197 -join 10.0.0.167
+```
+
+Double check all 3 are present in cluster by doing `curl http://localhost:8500/v1/status/peers`.
+
+
