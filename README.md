@@ -61,6 +61,10 @@ In addition to the swarm, one also needs a docker registry (I think).
 These are the following gotchas that you need to be aware of:
 
 * If using ipvlan, you need _experimental_, not main release docker (as at version 1.12)
+* The ipvlan network is local scoped. This means you need to create the network on every
+host individually. You should ensure the assigned IP ranges for each host do not overlap,
+as there does not appear to be any shared state about IP addresses assigned. The name of
+the networks should be identical on every host.
 * The tutorial only has you set up a single consul instance. It will change IP addresses
 every time the container restarts, and this will cause consul to fail because it cannot
 elect itself leader, since it thinks another instance exists at a different IP address.
@@ -69,7 +73,9 @@ Make sure to hard code an IP for it.
 * If not using a secured docker registry, also add to the `DOCKER_OPTS` value: `--insecure-registry=registry-hostname:5000`
 * Consul, docker node and docker masters can all be on the same host (I think - it works for me at least)
 * To get a container to failover between hosts in the case of an outage, you need to run the container with these args: ` -e reschedule:on-node-failure`
-(todo: figure out why the container doesn't get auto-started on the new host)
+(todo: figure out why the container doesn't get auto-started on the new host).
+Also note that a race condition exists - when the host comes back up, it will start the old container, and when 
+the docker swarm manager container starts, it will detect the container was moved and kill it.
 
 ### Setting up multiple consul hosts
 
