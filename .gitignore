@@ -1,2 +1,4 @@
 *.sw[op]
 gamedata/
+*.zip
+*.7z
