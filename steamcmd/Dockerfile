@@ -1,7 +1,5 @@
-FROM ubuntu:latest
+FROM base
 
-RUN apt-get update && apt-get dist-upgrade -y
-RUN apt-get install  -y lib32gcc1 wget
 RUN useradd -m steam
 
 RUN mkdir -p /steam/steamcmd_linux
