@@ -1,8 +1,6 @@
 FROM tf2
 USER root
 
-RUN apt-get install -y unzip p7zip curl
-
 USER steam
 
 WORKDIR /steam/tf2/

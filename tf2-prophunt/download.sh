@@ -11,8 +11,11 @@ echo $SMVERSION
 echo $SMMAJORVERSION
 
 SMURL="http://www.sourcemod.net/smdrop/$SMMAJORVERSION/$SMVERSION"
+echo "Downloading sourcemod: $SMURL"
 curl -o $SMVERSION $SMURL
 
 
-TF2ITEMSURL=$(   curl "https://builds.limetech.org/?p=tf2items" | grep -Eo "tf2items-.*?-linux.zip" | head -n 1)
-curl -o $TF2ITEMSURL https://builds.limetech.org/files/$TF2ITEMSURL
+TF2ITEMSFILENAME=$(   curl "https://builds.limetech.io/?p=tf2items" | grep -Eo "tf2items-.*?-linux.zip" | head -n 1)
+TF2ITEMSURL=https://builds.limetech.io/files/$TF2ITEMSFILENAME
+echo "Downloading TF2items: $TF2ITEMSURL"
+curl -o $TF2ITEMSFILENAME $TF2ITEMSURL
