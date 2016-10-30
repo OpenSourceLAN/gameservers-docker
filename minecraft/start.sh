@@ -1,8 +1,10 @@
 #!/bin/bash
 
 # Start server advertiser
+HOSTNAME=$( grep -o -P '(?<=motd=).*' server.properties )
+[[ -z "$HOSTNAME" ]] && HOSTNAME="A minecraft server"
 
-python3 advertise.py "Some server here" &
+python3 advertise.py "$HOSTNAME" &
 
 # Start server itself
 
