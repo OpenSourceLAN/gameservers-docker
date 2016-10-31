@@ -1,8 +1,6 @@
 FROM csgo
 
 WORKDIR /steam/csgo/
-USER root
-RUN apt-get install -y curl 
 USER steam
 ADD download.sh .
 RUN ./download.sh
@@ -14,7 +12,7 @@ ADD metamod.vdf csgo/
 
 ADD http://warmod.bitbucket.org/plugins/warmod.smx csgo/addons/sourcemod/plugins/
 
-ADD start.sh .
+ADD start-warmod.sh .
 USER root
 ADD cfg csgo/cfg
 RUN chown steam:steam csgo/addons/sourcemod/plugins/warmod.smx
