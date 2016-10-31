@@ -14,7 +14,11 @@ WORKDIR /quake
 ADD baseq3/* compmaps.txt cpma.cfg /usr/share/games/quake3/baseq3/
 RUN unzip /quake/*.zip -d /usr/share/games/quake3/
 
+# We need to be able to update this config file at runtime
+RUN touch /usr/share/games/quake3/baseq3/hostname.cfg && chown quake:quake /usr/share/games/quake3/baseq3/hostname.cfg
+ADD start*.sh /quake/
+
 USER quake
 
 # exec relative to baseq3 directory
-CMD /usr/games/quake3-server +set dedicated 1 +exec cpma.cfg
+CMD ./start-cpma.sh
