@@ -9,24 +9,20 @@ WORKDIR /steam/tf2/
 #ADD https://github.com/powerlord/sourcemod-prophunt/releases/download/maps/PHMapEssentialsBZ2.7z .
 ADD PHMapEssentialsBZ2.7z  .
 
-
-ADD start.sh /steam/tf2/
-ADD download.sh .
-RUN ./download.sh
-
-
-RUN tar -xf mm*.tar.gz -C tf/
-RUN tar -xf sourcemod*.tar.gz -C tf/
-
-# One of these two URLs always returns modified, so it craps out Docker's caching mechanism :<
-
-ADD https://forums.alliedmods.net/attachment.php?attachmentid=146505&d=1441898056 prophuntredux.zip
-ADD http://www.sourcemod.net/vbcompiler.php?file_id=34433 tf/addons/sourcemod/plugins/sm_observerpoint.smx
+# Don't forget they're .tar.gzs, so docker will try and be too smart for its own damed good
+ADD mmsource-*-linux.tar.gz /steam/tf2/tf/
+ADD sourcemod-*-linux.tar.gz /steam/tf2/tf/
+ADD tf2items-*-linux.zip /steam/tf2/
+ADD sm_observerpoint.smx prophuntredux.zip  /steam/tf2/
 ADD metamod.vdf tf/
+RUN ls
+
+
 
 USER root
 RUN chown steam *
 RUN chown -R steam tf/addons
+RUN apt-get install -y bzip2 # Remove this next time we've built all images from scratch
 USER steam
 
 RUN unzip -n prophuntredux.zip -d tf/ 
@@ -34,6 +30,10 @@ RUN unzip -n tf2items*.zip -d tf/
 
 
 RUN 7zr x -otf/ PHMapEssentialsBZ2.7z
-
+ADD ph-maplist.txt /steam/tf2/tf/cfg/
 WORKDIR tf/maps/
 RUN bunzip2 *.bz2
+WORKDIR /steam/tf2/
+
+ADD start*.sh ./
+CMD ./start-tf2-prophunt.sh

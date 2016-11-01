@@ -9,5 +9,6 @@ RUN ./steamcmd.sh +login anonymous +force_install_dir ../tf2 +app_update 232250 
 
 WORKDIR /steam/tf2/
 
-ADD start.sh .
+ADD start*.sh .
 
+CMD ./start-tf2.sh
