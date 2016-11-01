@@ -1,3 +1,6 @@
 #!/bin/bash
 
-exec ./start.sh DM-Spacer?Game=DM?MaxPlayers=64
+[[ -z $MAP ]] && export MAP="DM-Spacer"
+[[ -z $MAXPLAYERS ]] && export MAXPLAYERS=64
+
+exec ./start.sh ?Game=DM

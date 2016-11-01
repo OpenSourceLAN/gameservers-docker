@@ -1,5 +1,11 @@
 
-Set your RCON password in Engine.ini
+Image supports these environment variables - 
+* `SV_HOSTNAME`
+* `SV_PASSWORD` - password to join game
+* `RCON_PASSWORD`
+* `MAP` - first map
+* `MAXPLAYERS`
+
 
 Log in to RCON using `RconAuth YourPasswordHere` inside the game client
 
@@ -7,6 +13,7 @@ Then use `RconMap DM-Spacer` to change maps
 
 `RconExec AddBots 4` to add bots, and `RconExec killbots 4` to remove
 
+There are two startup scripts for Unreal - `deathmatch.sh` and `instagib.sh`.
 
 Useful links:
 
