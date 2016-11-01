@@ -1,7 +1,7 @@
 
 Quick start:
 
-`docker run -it --net=host --rm -e "SV_HOSTNAME=Some Quake Server" -e "RCON_PASSWORD=supersecret" -e "SV_PASSWORD=nonoobsallowed" -e "MAXPLAYERS=12" --name quake3  quake3`
+`docker run -it --net=host --rm -e "SV_HOSTNAME=Some Quake Server" -e "RCON_PASSWORD=supersecret" -e "SV_PASSWORD=nonoobsallowed" -e "MAXPLAYERS=12" --restart=unless-stopped --name quake3  quake3`
 
 Environment variables available:
 
