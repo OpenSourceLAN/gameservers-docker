@@ -27,6 +27,12 @@ hostname "$SV_HOSTNAME"
 $RCON_PASSWORD
 $SV_PASSWORD
 EOF
+cat <<EOF >/steam/csgo/csgo/cfg/server2.cfg
+
+hostname "$SV_HOSTNAME"
+$RCON_PASSWORD
+$SV_PASSWORD
+EOF
 
 if [[ -n $SOURCETV_ADDR ]]
 then
