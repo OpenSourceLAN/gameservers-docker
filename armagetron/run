@@ -19,4 +19,4 @@ cp autoexec.cfg gamedata/server$SERVER_NUM/config/
 sed -i  "s/SERVER_NUM/$SERVER_NUM/" gamedata/server$SERVER_NUM/config/autoexec.cfg
 
 
-docker run -it --net=network --restart=unless-stopped -v `pwd`/gamedata/server$SERVER_NUM/config:/tron/server/config -v `pwd`/gamedata/server$SERVER_NUM/var:/tron/server/var tron
+docker run -it --net=$NETWORK --restart=unless-stopped -v `pwd`/gamedata/server$SERVER_NUM/config:/tron/server/config -v `pwd`/gamedata/server$SERVER_NUM/var:/tron/server/var armagetron

@@ -13,3 +13,4 @@ RUN unzip /tm/*.zip
 ADD tracklist.cfg /tm/GameData/Tracks/
 ADD dedicated_cfg.txt /tm/GameData/Config/
 Add start_server.sh /tm/
+

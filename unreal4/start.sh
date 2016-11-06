@@ -11,8 +11,6 @@ sed -i "s/RconPassword=.*/RconPassword=$RCON_PASSWORD/" /unreal/LinuxServer/Unre
 [[ -z $MAP ]] && export MAP="DM-Spacer"
 [[ -z $MAXPLAYERS ]] && export MAXPLAYERS=64
 
-[[ -z "$GAME_OPTS" ]] && (echo "No game arguments provided, can't start server" >&2 && exit 1)
-
 GAME_OPTS="$MAP?MaxPlayers=$MAXPLAYERS?$@"
 
 [[ -n $SV_PASSWORD ]] && GAME_OPTS="$GAME_OPTS?ServerPassword=$SV_PASSWORD"
