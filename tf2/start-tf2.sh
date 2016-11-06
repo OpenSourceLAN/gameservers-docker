@@ -6,10 +6,8 @@ then
 fi
 
 [[ $LAN -ge 1 ]] && LAN="1" || LAN="0"
-[[ $GAME_TYPE -ge 1 ]] && GAME_TYPE="1" || GAME_TYPE="0"
-[[ $GAME_MODE -ge 1 ]] && GAME_MODE="1" || GAME_MODE="0"
 
-[[ -z "$MAP" ]] && MAP="cp_hydro"
+[[ -z "$MAP" ]] && MAP="cp_badlands"
 MAP="+map $MAP"
 
 [[ -n $MAXPLAYERS ]] &&  MAXPLAYERS="-maxplayers $MAXPLAYERS"

@@ -23,7 +23,7 @@
 	</masterserver_account>
 	
 	<server_options>
-		<name>%% YOUR SERVER NAME HERE %%</name>
+		<name>Freeplay Comp server</name>
 		<comment></comment>
 		<hide_server>0</hide_server>					<!-- value is 0 (always shown), 1 (always hidden), 2 (hidden from nations) -->
 
