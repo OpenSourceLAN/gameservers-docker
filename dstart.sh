@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NET="gameservers"
-RESTART="always"
+RESTART="unless-stopped"
 DAEMON="-d"
 [[ -n $NAME ]] && NAME="--name $NAME" || (echo "set NAME env var" && exit 1)
 
