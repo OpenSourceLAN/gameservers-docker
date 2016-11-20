@@ -1,5 +1,9 @@
 #!/bin/bash
 
+CWD=$(pwd)
+SAVED_DATA_DIR="${CWD}/data"
+mkdir -p $SAVED_DATA_DIR
+
 select_name() {
    for i in `seq 1 1000`
    do
@@ -29,11 +33,17 @@ ask_type() {
 
 . settings.sh
 
+
+
 [[ -z $NAME ]] && NAME=`select_name $TYPE`
+
+[[ -f $TYPE/mounts ]] && mkdir -p $NAME && DIR=$(cat $TYPE/mounts) && MOUNTS="-v ${SAVED_DATA_DIR}/${NAME}:${DIR}"
+
+
 [[ -n $NAME ]] && NAME="--name $NAME"
 [[ -n $NETWORK ]] && NETWORK="--net $NETWORK"
 [[ -n $RESTART ]] && RESTART="--restart=$RESTART"
 
 
 
-docker run $NETWORK $RESTART $NAME $OTHER_DOCKER_OPTS $TYPE $@
+docker run $NETWORK $RESTART $NAME $MOUNTS $OTHER_DOCKER_OPTS $TYPE $@

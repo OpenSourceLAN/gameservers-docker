@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BIN=./bin/x64/factorio
-SAVE=save.zip
+SAVE=/factorio/saves/save.zip
 
 [[ -f save.zip ]] || $BIN --create $SAVE
 

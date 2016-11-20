@@ -43,7 +43,7 @@ the ipvlan docker network driver.
 # ip-range is the CIDR block of IP addresses to assign to containers
 # parent is the name of the interface you'd like to bridge containers to
 
-docker network create -d ipvlan --subnet=10.0.0.0/24 -o parent=eth0 --ip-range 10.0.0.16/28 gameservers
+docker network create -d ipvlan --subnet=10.0.0.0/24 -o parent=eth0 --ip-range 10.0.0.16/28 --gateway 10.0.0.1  gameservers
 
 # Starts your game server inside the layer 2 network
 docker run -it --rm --net=gameservers csgo /steam/csgo/srcds_run -game csgo +sv_lan 1 +map cs_office
