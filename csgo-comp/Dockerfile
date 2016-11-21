@@ -12,3 +12,5 @@ ADD start-comp.sh /steam/csgo/
 USER root
 RUN chown -R steam:steam /steam/csgo/csgo/cfg
 USER steam
+
+CMD ["./start-comp.sh"]

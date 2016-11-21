@@ -15,3 +15,5 @@ RUN mv --no-clobber /openttd/extract/*/* /openttd/baseset/
 
 RUN chown -R openttd:openttd /openttd
 USER openttd
+
+CMD ["./start-openttd.sh"]

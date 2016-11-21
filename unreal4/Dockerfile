@@ -17,3 +17,5 @@ ADD Engine.ini /unreal/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/
 
 
 #TODO: add config in here, including the bFirstRun=false thing
+
+CMD ["./start-unreal4.sh"]

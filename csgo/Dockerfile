@@ -12,3 +12,5 @@ RUN ./steamcmd.sh +login anonymous +force_install_dir ../csgo +app_update 740  +
 ADD start.sh /steam/csgo/
 
 WORKDIR /steam/csgo
+
+CMD ["./start.sh"]

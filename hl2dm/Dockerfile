@@ -10,3 +10,4 @@ WORKDIR /steam/hl2dm/
 
 ADD start.sh /steam/hl2dm/
 
+CMD ["./start.sh"]
