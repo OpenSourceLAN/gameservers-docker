@@ -11,4 +11,4 @@ WORKDIR /steam/tf2/
 
 ADD start*.sh .
 
-CMD ./start-tf2.sh
+CMD ["./start-tf2.sh"]

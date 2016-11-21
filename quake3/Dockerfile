@@ -21,4 +21,4 @@ ADD start*.sh /quake/
 USER quake
 
 # exec relative to baseq3 directory
-CMD ./start-cpma.sh
+CMD ["./start-cpma.sh"]

@@ -8,4 +8,4 @@ ADD install.sh /install.sh
 RUN /install.sh
 
 
-CMD armagetronad-dedicated --configdir /tron/server/config --vardir /tron/server/var
+CMD ["armagetronad-dedicated", "--configdir", "/tron/server/config", "--vardir", "/tron/server/var"]

@@ -8,4 +8,4 @@ RUN chown -R factorio:factorio /factorio
 WORKDIR /factorio
 ADD start-*.sh /factorio/
 USER factorio
-CMD /factorio/start-factorio.sh
+CMD ["/factorio/start-factorio.sh"]

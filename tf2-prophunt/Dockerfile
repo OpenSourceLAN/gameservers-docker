@@ -36,4 +36,4 @@ RUN bunzip2 *.bz2
 WORKDIR /steam/tf2/
 
 ADD start*.sh ./
-CMD ./start-tf2-prophunt.sh
+CMD ["./start-tf2-prophunt.sh"]

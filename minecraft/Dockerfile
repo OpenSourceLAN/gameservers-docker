@@ -14,4 +14,4 @@ ADD minecraft_server*.jar start.sh advertise.py eula.txt server.properties /mine
 # This fails, 
 # RUN java -Xms1G -Xmx1G -jar minecraft_server.1.10.2.jar nogui
 # TODO: create server.properties, and an eula.txt
-CMD ./start.sh
+CMD ["./start.sh"]
