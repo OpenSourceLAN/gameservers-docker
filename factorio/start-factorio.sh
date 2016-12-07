@@ -14,6 +14,7 @@ JQ_FILTER=""
 
 [[ -n $SERVER_NAME ]] && JQ_FILTER="$JQ_FILTER .name = \"$SERVER_NAME\" |"
 [[ -n $SERVER_DESCRIPTION ]] && JQ_FILTER="$JQ_FILTER .description = \"$SERVER_DESCRIPTION\" |"
+[[ -n $LAN ]] && [[ $LAN -ne "0" ]] && JQ_FILTER="$JQ_FILTER .visibility.public = false | .visibility.lan = true |"
 
 JQ_FILTER="$JQ_FILTER ."
 
@@ -23,4 +24,5 @@ jq "$JQ_FILTER" data/server-settings.example.json > data/server-settings.json
 
 # TODO: maybe we can also do ./factorio  --start-server-load-latest --server-settings ./data/server-settings.json ?
 
-exec $BIN --start-server-load-latest
+exec $BIN --start-server-load-latest --server-settings /factorio/data/server-settings.json
+
