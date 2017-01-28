@@ -20,7 +20,7 @@ ask_type() {
   do
     echo "Please select from one of the following images, or ctrl+c to exit:"
     # how to list directory? ls -d would be nice, but nope!
-    find .  -maxdepth  1 -type d  | egrep -v -e '^.$' -e '.git' | sed 's/\.\///' | sort
+    find .  -maxdepth  1 -type d  | egrep -v -e '^.$' -e '.git' -e '^./data$' | sed 's/\.\///' | sort
     read -p "Image: " TYPE
     ls $TYPE >/dev/null 2>/dev/null && return 0
     echo "Invalid type: $TYPE, try again! :)"

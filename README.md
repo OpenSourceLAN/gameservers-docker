@@ -23,6 +23,11 @@ In all cases, dependences (eg, steamcmd, sourcemod, etc) are fetched directly
 from the maintainer's websites - this repository contains no binaries. 
 
 
+## Tutorial
+
+There is a [tutorial on the Open Source LAN website](http://opensourcelan.com/blog/2017/01/28/containing-your-game-servers/)
+which will step you through building and using the images.
+
 ## Contributions 
 Contributions are welcome. Submit a pull request or open an issue. 
 
