@@ -46,4 +46,5 @@ ask_type() {
 
 
 
+echo docker run --tty --interactive $NETWORK $RESTART $NAME $MOUNTS $OTHER_DOCKER_OPTS $TYPE $@
 docker run --tty --interactive $NETWORK $RESTART $NAME $MOUNTS $OTHER_DOCKER_OPTS $TYPE $@
