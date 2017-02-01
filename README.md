@@ -116,3 +116,25 @@ and the other two like this:
 Double check all 3 are present in cluster by doing `curl http://localhost:8500/v1/status/peers`.
 
 
+### TODO
+
+Ensure every instance has:
+
+* A README covering available options, startup scripts, etc
+* Auto-mount point support where appropriate (eg, for saves, demos)
+* Config options for at least:
+  * The name of the server (what it shows as in server browsers)
+  * Server password
+  * RCON password (where RCON exists)
+  * LAN or internet
+* Has a way to easily RCON or remote control
+
+Make the easy start script support passing environment variables to the container
+
+Make an easy way to import config files in to the servers (eg mounting cfg directories)
+
+Add more games
+
+### LICENSE
+
+This project is licensed under GPL 3.0. See LICENSE for more information.
