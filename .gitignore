@@ -6,4 +6,5 @@ gamedata/
 *.jar
 *.gz
 *.smx
+*.bz2
 /data

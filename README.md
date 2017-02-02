@@ -127,7 +127,10 @@ Ensure every instance has:
   * Server password
   * RCON password (where RCON exists)
   * LAN or internet
+* Has dockerfile configured with default ports it exposes (not that the suggested configuration uses these)
 * Has a way to easily RCON or remote control
+* Does not require user to manually download everything (with exceptions for some large and customisable downloads)
+* Fix the thing where the auto mounts always have permission problems because conatiners
 
 Make the easy start script support passing environment variables to the container
 
