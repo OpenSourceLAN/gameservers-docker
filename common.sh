@@ -1,7 +1,7 @@
 #!/bin/bash
 
 gettimestamp() {
-	date +%Y%m%d-%k%M%S
+	date +%Y%m%d-%H%M%S
 }
 
 docker_build() {
