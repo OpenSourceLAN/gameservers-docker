@@ -1,1 +1,4 @@
-docker build -t 7daystodie .
+#!/bin/bash
+
+. ../common.sh
+docker_build 7daystodie

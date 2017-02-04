@@ -1,2 +1,3 @@
 #!/bin/bash
-docker build -t openttd .
+. ../common.sh
+docker_build openttd

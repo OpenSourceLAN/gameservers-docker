@@ -1,5 +1,8 @@
 #!/bin/bash
 
+. ../common.sh
+
+
 if [[ ! `ls mmsource-*-linux.tar.gz` ]]
 then
 
@@ -33,4 +36,4 @@ fi
 [[ -f prophuntredux.zip ]] || curl -o prophuntredux.zip "https://forums.alliedmods.net/attachment.php?attachmentid=146505&d=1441898056" || (echo "Coudln't download prophunt" && exit 1)
 [[ -f sm_observerpoint.smx ]] || curl -o sm_observerpoint.smx "http://www.sourcemod.net/vbcompiler.php?file_id=34433" || (echo "Coudln't download observerpoint" && exit 1)
 
-docker build -t tf2-prophunt .
+docker_build tf2-prophunt

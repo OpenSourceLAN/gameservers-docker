@@ -1,2 +1,5 @@
 #!/bin/bash
-docker build -t steamcmd .
+
+. ../common.sh
+
+docker_build steamcmd

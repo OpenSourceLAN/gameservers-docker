@@ -1,2 +1,3 @@
 #!/bin/bash
-docker build -t csgo .
+. ../common.sh
+docker_build csgo

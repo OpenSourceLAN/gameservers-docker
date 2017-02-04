@@ -1,2 +1,5 @@
 #!/bin/bash
-docker build -t tf2 .
+
+. ../common.sh
+
+docker_build tf2

@@ -1,2 +1,5 @@
 #!/bin/bash
-docker build -t unreal4 .
+
+. ../common.sh
+
+docker_build unreal4

@@ -1,2 +1,3 @@
 #!/bin/bash
-docker build -t hl2dm .
+. ../common.sh
+docker_build hl2dm

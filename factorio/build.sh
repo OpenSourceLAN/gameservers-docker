@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. ../common.sh
+
 download() {
 	DOMAIN="https://www.factorio.com"
 	URL=$(curl $DOMAIN/download-headless/stable | egrep -o '/get-download/.+/headless/linux64' | head -n 1)
@@ -11,4 +13,4 @@ download() {
 [[ ! `ls factorio_headless*.tar.gz` ]] && download
 
 
-docker build -t factorio .
+docker_build factorio

@@ -1,2 +1,4 @@
 #!/bin/bash
-docker build -t armagetron .
+
+. ../common.sh
+docker_build armagetron

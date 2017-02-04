@@ -1,1 +1,5 @@
-docker build -t trackmania .
+#!/bin/bash
+
+. ../common.sh
+
+docker_build trackmania
