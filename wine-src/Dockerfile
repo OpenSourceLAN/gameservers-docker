@@ -7,7 +7,7 @@ RUN apt-get install -y build-essential flex bison libx11-dev libfreetype6-dev xv
 ADD wine-*.tar.bz2 /root/
 WORKDIR /root/wine-2.0/
 
-RUN ./configure --enable-win64 --prefix=/opt/wine-2.0 && make -j $(cat /proc/cpuinfo  | grep processor | wc -l) &&  DESTDIR=/opt/wine-2.0 make install && make clean
+RUN ./configure --enable-win64 --prefix=/opt/wine-2.0 && make -j $(cat /proc/cpuinfo  | grep processor | wc -l) &&  make install && make clean
 
 # --without-freetype ?
 
