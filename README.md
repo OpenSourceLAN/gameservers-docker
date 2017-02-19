@@ -1,27 +1,33 @@
 
-I'm sure there's already a bunch of Dockerfiles and images out there that do 
-exactly this, but I'm doing it myself because I can. Putting game servers in 
-Docker containers. 
+Putting game servers in Docker containers. Because it makes life easier.
 
-I will only ever use these when I am operating on a LAN, so for simplicity I 
-have not included any ports in these. Instead, you should spawn each container
-with the option `--net=host` set so that each container gets a direct 
-connection to the internal LAN. This means that things like LAN server 
-broadcast discovery will work. 
+A set of game servers that have been wrapped with Docker. All images are
+composed of other images in this repository, except for base. Most images
+will auto-download any dependencies they have (eg, factorio server files
+or sourcemod for srcds), making it almost one command to install a server.
+No binaries are stored in this repo, so make sure you have internet to
+download them with.
 
-All srcds based images depend on the steamcmd docker image, so this needs 
-to be built first. For example, to build the HL2DM images:
+Includes a utility script `start_server.sh` which mounts save data to an
+external volume and sorts out networking for you.
+
+## Quick start
+
+Assuming you are on a blank server with Git and docker installed:
 
 ```
-cd steamcmd
-docker build -t steamcmd .
-cd ../hl2dm
-docker built -t hl2dm .
+git clone https://github.com/OpenSourceLAN/gameservers-docker.git .
+./build.sh factorio
+
+./start_server.sh factorio
+# Or
+docker run -it --net=host -e "SERVER_NAME=Some really cool server"\
+-v `pwd`/save:`cat factorio/mounts` --name factorio factorio
+
 ```
 
-In all cases, dependences (eg, steamcmd, sourcemod, etc) are fetched directly
-from the maintainer's websites - this repository contains no binaries. 
-
+Most servers have environment variables that can be used to configure them.
+Read the README.md file in each directory to see what is available.
 
 ## Tutorial
 
