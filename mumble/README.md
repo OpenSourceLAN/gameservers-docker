@@ -14,6 +14,3 @@ Environment variables starting with `MUMBLE_` configure the murmur.ini file. If 
 
 Pass `MUMBLE_RELEASE` to `docker build` to use a specific mumble release instead of the latest.
 
-TODO: 
-* add all the env vars
-* configure mumble.ini
