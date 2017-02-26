@@ -7,4 +7,4 @@ hostname "$SV_HOSTNAME"
 $RCON_PASSWORD
 EOF
 
-./srcds_run -game hl2mp +sv_lan 1 -ip 0.0.0.0 +exec server.cfg +map dm_underpass -maxplayers $MAXPLAYERS
+exec ./srcds_run -game hl2mp +sv_lan 1 -ip 0.0.0.0 +exec server.cfg +map dm_underpass -maxplayers $MAXPLAYERS
