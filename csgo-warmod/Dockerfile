@@ -14,7 +14,8 @@ ADD http://warmod.bitbucket.org/plugins/warmod.smx csgo/addons/sourcemod/plugins
 
 ADD start-warmod.sh .
 USER root
-ADD cfg csgo/cfg
+# I guess if you want to put config stuff in now is the time?
+#ADD cfg csgo/cfg
 RUN chown steam:steam csgo/addons/sourcemod/plugins/warmod.smx
 RUN chown  -R steam:steam csgo/cfg/
 USER steam
