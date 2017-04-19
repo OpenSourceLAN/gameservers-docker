@@ -37,7 +37,9 @@ ask_type() {
 
 [[ -z $NAME ]] && NAME=`select_name $TYPE`
 
-[[ -f $TYPE/mounts ]] && mkdir -p $NAME && DIR=$(cat $TYPE/mounts) && MOUNTS="-v ${SAVED_DATA_DIR}/${NAME}:${DIR}"
+# chmod 777 because who knows what uid will own the data inside docker
+# #supersecure #bestpractices #lolsoz
+[[ -f $TYPE/mounts ]] && mkdir -p $SAVED_DATA_DIR/$NAME && DIR=$(cat $TYPE/mounts) && MOUNTS="-v ${SAVED_DATA_DIR}/${NAME}:${DIR}" && chmod 777 $SAVED_DATA_DIR/$NAME
 
 
 [[ -n $NAME ]] && NAME="--name $NAME"
