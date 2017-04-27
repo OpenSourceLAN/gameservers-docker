@@ -10,7 +10,7 @@ RUN tar -xf sourcemod*.tar.gz -C csgo/
 
 ADD metamod.vdf csgo/
 
-ADD http://warmod.bitbucket.org/plugins/warmod.smx csgo/addons/sourcemod/plugins/
+ADD https://warmod.bitbucket.io/plugins/warmod.smx csgo/addons/sourcemod/plugins/
 
 ADD start-warmod.sh .
 USER root
