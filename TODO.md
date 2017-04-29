@@ -10,3 +10,9 @@ Games to do:
 * ARK (is it popular?)
 * Starboud? (is it popular?)
 * Garys Mod (vanilla is boring, right? What mods? How to do mods in this system?)
+* ARMA (is dayz arma mod still played? is 2 or 3 more popular?)
+* ZDaemon
+* Terraria
+* Armagetron (refactor current code+config)
+* Steam+origin+etc cache
+
