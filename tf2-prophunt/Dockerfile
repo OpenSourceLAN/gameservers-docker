@@ -5,8 +5,6 @@ USER steam
 
 WORKDIR /steam/tf2/
 
-# Huge dep. Download every time or keep copy locally?
-#ADD https://github.com/powerlord/sourcemod-prophunt/releases/download/maps/PHMapEssentialsBZ2.7z .
 ADD PHMapEssentialsBZ2.7z  .
 
 # Don't forget they're .tar.gzs, so docker will try and be too smart for its own damed good
