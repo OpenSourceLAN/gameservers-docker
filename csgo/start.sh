@@ -15,7 +15,7 @@ fi
 [[ -n $GAME_MODE ]] && GAME_MODE="+game_mode $GAME_MODE"
 [[ -n $MAP ]] &&  MAP="+map $MAP"
 [[ -n $MAXPLAYERS ]] &&  MAXPLAYERS="-maxplayers_override $MAXPLAYERS"
-
+[[ -n $SERVER_TOKEN ]] && SERVER_TOKEN="+sv_setsteamaccount $SERVER_TOKEN"
 # Config file
 [[ -n $RCON_PASSWORD ]] && RCON_PASSWORD="rcon_password $RCON_PASSWORD"
 [[ -n $SV_PASSWORD ]] && SV_PASSWORD="sv_password $SV_PASSWORD"
@@ -41,7 +41,7 @@ then
 
 else
 
-   exec ./srcds_run -game csgo +sv_lan $LAN -ip 0.0.0.0 $MAP -usercon $GAME_MODE $GAME_TYPE -tickrate 128 $MAXPLAYERS $OTHER_ARGS $@
+   exec ./srcds_run -game csgo +sv_lan $LAN -ip 0.0.0.0 $MAP -usercon $GAME_MODE $GAME_TYPE -tickrate 128 $MAXPLAYERS $SERVER_TOKEN $OTHER_ARGS $@
 
 
 fi
