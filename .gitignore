@@ -5,6 +5,8 @@ gamedata/
 *.pk3
 *.jar
 *.gz
+*.tgz
 *.smx
 *.bz2
 /data
+wads/
