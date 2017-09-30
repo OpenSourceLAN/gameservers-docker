@@ -14,8 +14,10 @@ ADD deathmatch.sh instagib.sh /unreal/
 ADD Game.ini /unreal/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/
 ADD Engine.ini /unreal/LinuxServer/UnrealTournament/Saved/Config/LinuxServer/
 
-
-RUN chown -R unreal:unreal  .
+# file get added as being owned by root
+USER root
+RUN chown -R unreal:unreal  /unreal/LinuxServer/UnrealTournament/Saved/ /unreal/*.sh
+USER unreal
 
 #TODO: add config in here, including the bFirstRun=false thing
 
