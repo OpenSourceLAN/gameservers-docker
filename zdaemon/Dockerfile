@@ -9,3 +9,5 @@ WORKDIR /zdaemon
 ADD wads/* /zdaemon/
 ADD start-* ffa-template.cfg /zdaemon/
 
+CMD ["./start-ffa.sh"]
+
