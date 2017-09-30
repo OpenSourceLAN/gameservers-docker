@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
+set -e
 
 mkdir  -p /tron/server/config
 mkdir  -p /tron/server/var
 mkdir -p /tron/src
-cd /tron/src
-curl -sSL -o tron.tar.gz https://launchpad.net/armagetronad/0.2.8/0.2.8.3.x/+download/armagetronad-0.2.8.3.3.src.tar.gz
 
-tar -xf tron.tar.gz
-cd armagetron*
+cd /armagetron*
+echo "Configuring"
+
 ./configure --enable-dedicated
+
+echo "Making"
 make -j 8 
+
+echo "installing"
 make install
 
 rm -rf /tron/src

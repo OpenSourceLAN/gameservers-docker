@@ -3,9 +3,9 @@ FROM base
 RUN apt-get install -y libxml2 libxml2-dev
 RUN apt-get install -y build-essential xml2
 
+ADD armagetronad-*.src.tar.* /
 ADD install.sh /install.sh
-
 RUN /install.sh
+ADD start-* /tron/
 
-
-CMD ["armagetronad-dedicated", "--configdir", "/tron/server/config", "--vardir", "/tron/server/var"]
+CMD ["/tron/start-ffa.sh"]

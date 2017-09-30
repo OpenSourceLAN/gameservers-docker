@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[[ -n $SERVER_NAME_BASE ]] || SERVER_NAME_BASE="Tron Server"
+
 if [[ -z $SERVER_NUM ]]
 then 
   echo "SERVER_NUM not set"
@@ -13,10 +15,5 @@ then
 fi 
 
 mkdir -p gamedata/server$SERVER_NUM/var
-mkdir -p gamedata/server$SERVER_NUM/config
 
-cp autoexec.cfg gamedata/server$SERVER_NUM/config/
-sed -i  "s/SERVER_NUM/$SERVER_NUM/" gamedata/server$SERVER_NUM/config/autoexec.cfg
-
-
-docker run -it --net=$NETWORK --restart=unless-stopped -v `pwd`/gamedata/server$SERVER_NUM/config:/tron/server/config -v `pwd`/gamedata/server$SERVER_NUM/var:/tron/server/var armagetron
+docker run -it --net=$NETWORK --restart=unless-stopped -e "SERVER_NAME=$SERVER_NAME_BASE $SERVER_NUM" -v `pwd`/gamedata/server$SERVER_NUM/var:/tron/server/var armagetron
