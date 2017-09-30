@@ -10,7 +10,8 @@ ADD *.zip /tm/
 RUN ls /tm/
 RUN unzip /tm/*.zip
 
-ADD tracklist.cfg /tm/GameData/Tracks/
+ADD tracklist*.cfg /tm/GameData/Tracks/
 ADD dedicated_cfg.txt /tm/GameData/Config/
 Add start_server.sh /tm/
 
+CMD ["/tm/start_server.sh"]
