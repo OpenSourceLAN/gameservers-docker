@@ -15,7 +15,7 @@ function explodemaps() {
 set maxclients $SV_MAXPLAYERS"
 
 # Default maps
-[[ -n $MAPS ]] && MAPS="map01,map04,map07"
+[[ -z $MAPS ]] && MAPS="map01,map04,map07"
 
 cat <<EOF > overrides.cfg
 
