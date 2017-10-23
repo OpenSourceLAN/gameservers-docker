@@ -9,14 +9,16 @@ gettimestamp() {
 # Builds container with given name, and any dependencies
 docker_build() {
 	local NAME=$1
+        local DOCKERFILE=$2
         local CACHE=""
 
 	[[ -z $NAME ]] && echo "No name provided for docker build" && exit 1
+        [[ -z $DOCKERFILE ]] && DOCKERFILE="-f Dockerfile" || DOCKERFILE="-f ${DOCKERFILE}"
 
 	local PARENT="$(get_docker_parent $NAME)"
 	[[ -n $PARENT ]] && docker_build_if_needed $PARENT
         [[ -n $NOCACHE ]] && CACHE="--no-cache"
-	(cd $BASE_DIR/$NAME && docker build $CACHE -t $NAME -t $NAME:$(gettimestamp) . )
+	(cd $BASE_DIR/$NAME && docker build $DOCKERFILE $CACHE -t $NAME -t $NAME:$(gettimestamp) . )
 }
 
 # Builds a container if it doesn't already have a latest
