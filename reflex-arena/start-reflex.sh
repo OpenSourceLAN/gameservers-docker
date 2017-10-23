@@ -11,7 +11,7 @@
 
 #TIMELIMIT
 #ROUND_TIMELIMIT
-[[ -n $MAP && -n $WMAP ]] || MAP="Fusion"
+[[ -z $MAP && -z $WMAP ]] && MAP="Fusion"
 
 [[ -n $MAP ]] && MAP="sv_startmap $MAP"
 [[ -n $WMAP ]] && WMAP="sv_startwmap $WMAP"
