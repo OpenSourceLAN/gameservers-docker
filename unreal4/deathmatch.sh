@@ -3,4 +3,4 @@
 [[ -z $MAP ]] && export MAP="DM-Spacer"
 [[ -z $MAXPLAYERS ]] && export MAXPLAYERS=64
 
-exec ./start.sh ?Game=DM
+exec ./start-unreal4.sh Game=DM
