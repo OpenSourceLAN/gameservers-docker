@@ -3,14 +3,11 @@
 . ../common.sh
 
 download() {
-	DOMAIN="https://www.factorio.com"
-	URL=$(curl $DOMAIN/download-headless/stable | egrep -o '/get-download/.+/headless/linux64' | head -n 1)
-	[[ -z $URL ]] && (echo "Coudln't download factorio. Please download factorio_headless manually " && exit 1)
-	wget -O factorio_headless.tar.gz $DOMAIN$URL
+	wget -O factorio_headless.tar.xz https://factorio.com/get-download/stable/headless/linux64
 }
 
 
-[[ ! `ls factorio_headless*.tar.gz` ]] && download
+[[ ! `ls factorio_headless*.tar.xz` ]] && download
 
 
 docker_build factorio

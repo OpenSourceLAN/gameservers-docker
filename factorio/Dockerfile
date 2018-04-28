@@ -2,7 +2,7 @@ FROM base
 
 
 RUN adduser factorio 
-ADD factorio_headless*.tar.gz /
+ADD factorio_headless*.tar.* /
 RUN mkdir -p /factorio/saves && chown -R factorio:factorio /factorio
 RUN chown -R factorio:factorio /factorio
 WORKDIR /factorio
