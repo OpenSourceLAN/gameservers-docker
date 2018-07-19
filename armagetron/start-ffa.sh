@@ -1,6 +1,7 @@
 #!/bin/bash
 
 [[ -n $SERVER_NAME ]] || SERVER_NAME="Tron server"
+[[ -z $RCON_PASSWORD ]] || RCON_PASSWORD="ADMIN_PASS $RCON_PASSWORD"
 
 cat <<EOF > /tron/server/config/autoexec.cfg
 
@@ -17,6 +18,8 @@ TEAM_MAX_PLAYERS 1
 TEAMS_MAX 16
 
 SIZE_FACTOR -2 # Scales the map. Too big is boring.
+
+$RCON_PASSWORD
 EOF
 
 
