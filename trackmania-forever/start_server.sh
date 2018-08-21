@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sed -i "s/%%SERVER_NAME%%/$SERVER_NAME/" /tm/GameData/Config/dedicated_cfg.txt
+sed -i s/%%SERVER_NAME%%/$SERVER_NAME/ /home/tm/GameData/Config/dedicated_cfg.txt
 
 [[ -n $TRACKLIST ]] || TRACKLIST="tracklist-all.cfg"
 
