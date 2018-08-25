@@ -28,6 +28,6 @@ l4d_infected_limit $VERSUS_TEAM_LIMIT
 sm_cvar l4d_infected_limit $VERSUS_TEAM_LIMIT
 EOF
 
-echo '"$FULL_ADMINS" "@Full Admins"' > left4dead2/addons/sourcemod/configs/admins_simple.ini
+echo '$FULL_ADMINS' > left4dead2/addons/sourcemod/configs/admins_simple.ini
 
 exec ./srcds_run -game left4dead2 +sv_lan $LAN +ip $SERVER_IP +map $MAP +mp_gamemode $MP_GAMEMODE -usercon -port 27015 -maxplayers $MAXPLAYERS -secure $OTHER_ARGS $@
