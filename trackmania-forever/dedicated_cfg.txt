@@ -4,11 +4,11 @@
 	<authorization_levels>
 		<level>
 			<name>SuperAdmin</name>
-			<password>SuperAdmin</password>
+			<password>%%SUPER_ADMIN_PASSWORD%%</password>
 		</level>
 		<level>
 			<name>Admin</name>
-			<password>Admin</password>
+			<password>%%ADMIN_PASSWORD%%</password>
 		</level>
 		<level>
 			<name>User</name>
@@ -17,18 +17,18 @@
 	</authorization_levels>
 	
  	<masterserver_account>
-		<login></login>
-		<password></password>
-		<validation_key></validation_key>
+		<login>%%MASTER_SERVER_LOGIN%%</login>
+		<password>%%MASTER_SERVER_PASSWORD%%</password>
+		<validation_key>%%MASTER_SERVER_KEY%%</validation_key>
 	</masterserver_account>
 	
 	<server_options>
 		<name>%%SERVER_NAME%%</name>
-		<comment></comment>
+		<comment>%%SERVER_COMMENT%%</comment>
 		<hide_server>0</hide_server>					<!-- value is 0 (always shown), 1 (always hidden), 2 (hidden from nations) -->
 
-		<max_players>1024</max_players>
-		<password></password>
+		<max_players>%%MAX_PLAYERS%%</max_players>
+		<password>%%SERVER_PASSWORD%%</password>
 		
 		<max_spectators>1024</max_spectators>
 		<password_spectator></password_spectator>
@@ -48,7 +48,7 @@
 		</callvote_ratios>
 
 		<allow_challenge_download>True</allow_challenge_download>
-		<autosave_replays>False</autosave_replays>
+		<autosave_replays>True</autosave_replays>
 		<autosave_validation_replays>False</autosave_validation_replays>
 
 		<referee_password></referee_password>
