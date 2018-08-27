@@ -16,6 +16,6 @@ ARG CACHE_DATE
 RUN ./steamcmd.sh +login anonymous +force_install_dir ../l4d2 +app_update 222860 +quit
 
 WORKDIR /steam/l4d2/
-ADD start*.sh .
+ADD start.sh .
 
-ENTRYPOINT ["./start-l4d2.sh"]
+ENTRYPOINT ["./start.sh"]

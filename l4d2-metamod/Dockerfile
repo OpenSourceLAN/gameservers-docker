@@ -10,6 +10,6 @@ RUN tar -xf mm*.tar.gz -C left4dead2/ && \
 
 ADD metamod.vdf left4dead2/
 
-ADD start-l4d2.sh .
+ADD start.sh .
 
-ENTRYPOINT ["./start-l4d2.sh"]
+ENTRYPOINT ["./start.sh"]
