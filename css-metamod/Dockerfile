@@ -14,9 +14,6 @@ RUN tar -xf mm*.tar.gz -C cstrike/ && \
 
 ADD metamod.vdf cstrike/
 
-ADD start-css.sh .
-USER root
-# I guess if you want to put config stuff in now is the time?
-#ADD cfg csgo/cfg
-RUN chown  -R steam:steam cstrike/cfg/
-USER steam
+ADD start.sh .
+
+ENTRYPOINT [ "./start.sh" ]

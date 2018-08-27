@@ -10,6 +10,6 @@ RUN ./download.sh && \
 
 WORKDIR /steam/css
 
-ADD start-css.sh .
+ADD start.sh .
 
-ENTRYPOINT [ "./start-css.sh" ]
+ENTRYPOINT [ "./start.sh" ]

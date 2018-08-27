@@ -10,7 +10,12 @@ RUN mkdir -p /steam/css
 WORKDIR /steam/steamcmd_linux
 RUN ./steamcmd.sh +login anonymous +force_install_dir ../css +app_update 232330 +quit
 
-WORKDIR /steam/css/
-ADD start*.sh .
+ARG CACHE_DATE
+# do another update to catch updates since the original image was built
+# need to run docker build --build-arg CACHE_DATE="$(date)"
+RUN ./steamcmd.sh +login anonymous +force_install_dir ../css +app_update 232330 +quit
 
-CMD ["./start-css.sh"]
+WORKDIR /steam/css/
+ADD start.sh .
+
+ENTRYPOINT ["./start.sh"]

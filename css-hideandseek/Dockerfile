@@ -5,11 +5,11 @@ USER steam
 WORKDIR /steam/css/cstrike
 
 ADD download.sh .
-RUN ./download.sh
+RUN ./download.sh && \
+	unzip sm_hideandseek.zip
 
-RUN	unzip sm_hideandseek.zip
 WORKDIR /steam/css
 
-ADD start-css.sh .
+ADD start.sh .
 
-ENTRYPOINT [ "./start-css.sh" ]
+ENTRYPOINT [ "./start.sh" ]
