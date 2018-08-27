@@ -10,7 +10,7 @@
 # Config file
 [[ -n $RCON_PASSWORD ]] && RCON_PASSWORD="$RCON_PASSWORD"
 [[ -n $SV_PASSWORD ]] && SV_PASSWORD="$SV_PASSWORD"
-[[ -z $SV_HOSTNAME ]] && SV_HOSTNAME="Left 4 Dead 2 - ABM Mod"
+[[ -z $SV_HOSTNAME ]] && SV_HOSTNAME="Left 4 Dead 2 - 8v8 Versus"
 [[ -z $VERSUS_TEAM_LIMIT ]] && VERSUS_TEAM_LIMIT="8"
 
 # mp config
@@ -25,11 +25,6 @@ sm_cvar sv_removehumanlimit 1
 sm_cvar sv_force_unreserved 1
 sm_cvar fmc+vs_l4d(2)_enable 1
 EOF
-
-#sm_cvar l4d_maxplayers $MAXPLAYERS
-#sm_cvar l4d_survivor_limit $VERSUS_TEAM_LIMIT
-#sm_cvar l4d_infected_limit $VERSUS_TEAM_LIMIT
-
 
 echo $FULL_ADMINS > left4dead2/addons/sourcemod/configs/admins_simple.ini
 
