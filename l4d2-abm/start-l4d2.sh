@@ -20,14 +20,17 @@ cat <<EOF >/steam/l4d2/left4dead2/cfg/server.cfg
 hostname $SV_HOSTNAME
 rcon_password $RCON_PASSWORD
 sv_password $SV_PASSWORD
-l4d_maxplayers $MAXPLAYERS
-sm_cvar l4d_maxplayers $MAXPLAYERS
-l4d_survivor_limit $VERSUS_TEAM_LIMIT
-sm_cvar l4d_survivor_limit $VERSUS_TEAM_LIMIT
-l4d_infected_limit $VERSUS_TEAM_LIMIT
-sm_cvar l4d_infected_limit $VERSUS_TEAM_LIMIT
+sm_cvar sv_maxplayers $MAX_PLAYERS
+sm_cvar sv_removehumanlimit 1
+sm_cvar sv_force_unreserved 1
+sm_cvar fmc+vs_l4d(2)_enable 1
 EOF
 
-echo '"$FULL_ADMINS" "@Full Admins"' > left4dead2/addons/sourcemod/configs/admins_simple.ini
+#sm_cvar l4d_maxplayers $MAXPLAYERS
+#sm_cvar l4d_survivor_limit $VERSUS_TEAM_LIMIT
+#sm_cvar l4d_infected_limit $VERSUS_TEAM_LIMIT
+
+
+echo $FULL_ADMINS > left4dead2/addons/sourcemod/configs/admins_simple.ini
 
 exec ./srcds_run -game left4dead2 +sv_lan $LAN +ip $SERVER_IP +map $MAP +mp_gamemode $MP_GAMEMODE -usercon -port 27015 -maxplayers $MAXPLAYERS -secure $OTHER_ARGS $@
