@@ -49,6 +49,7 @@ printf "Using mapcyclefile $MAPCYCLEFILE\n"
 printf "Using servercfg    $SERVER_CFG\n"
 
 [[ -z $MAP ]] && MAP="$(head -1 /steam/insurgency2/insurgency/$MAPCYCLEFILE)"
+[[ -z $TICKRATE ]] && TICKRATE=64
 
 cat <<EOF >/steam/insurgency2/insurgency/cfg/server.cfg
 hostname $SV_HOSTNAME
@@ -58,4 +59,4 @@ sv_password $SV_PASSWORD
 "mapcyclefile" "$MAPCYCLEFILE"
 EOF
 
-exec ./srcds_run -game insurgency +maxplayers $MAXPLAYERS +map "$MAP" +sv_lan $LAN -ip 0.0.0.0 -port 27015 +exec $SERVER_CFG
+exec ./srcds_run -game insurgency +maxplayers $MAXPLAYERS +map "$MAP" +sv_lan $LAN -ip 0.0.0.0 -port 27015 -tickrate $TICKRATE +exec $SERVER_CFG

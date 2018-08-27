@@ -13,8 +13,8 @@ ARG CACHE_DATE
 # need to run docker build --build-arg CACHE_DATE="$(date)"
 RUN ./steamcmd.sh +login anonymous +force_install_dir ../insurgency2 +app_update 237410 +quit
 
-ADD start_insurgency.sh /steam/insurgency2/
+ADD start.sh /steam/insurgency2/
 
 WORKDIR /steam/insurgency2
 
-ENTRYPOINT ["./start_insurgency.sh"]
+ENTRYPOINT ["./start.sh"]
