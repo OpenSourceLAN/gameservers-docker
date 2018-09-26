@@ -4,15 +4,15 @@
 	<authorization_levels>
 		<level>
 			<name>SuperAdmin</name>
-			<password>SuperAdmin</password>
+			<password>SuperAdminPassword</password>
 		</level>
 		<level>
 			<name>Admin</name>
-			<password>Admin</password>
+			<password>AdminPassword</password>
 		</level>
 		<level>
 			<name>User</name>
-			<password>User</password>
+			<password>UserPassword</password>
 		</level>
 	</authorization_levels>
 	
