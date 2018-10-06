@@ -9,17 +9,19 @@ gettimestamp() {
 # Builds container with given name, and any dependencies
 docker_build() {
 	local NAME=$1
-        local DOCKERFILE=$2
-        local OTHERARGS=$3
-        local CACHE=""
+    local DOCKERFILE=$2
+    local OTHERARGS=$3
+    local OVERRIDEDIR=$4
+    local CACHE=""
 
 	[[ -z $NAME ]] && echo "No name provided for docker build" && exit 1
-        [[ -z $DOCKERFILE ]] && DOCKERFILE="-f Dockerfile" || DOCKERFILE="-f ${DOCKERFILE}"
+    [[ -z $DOCKERFILE ]] && DOCKERFILE="-f Dockerfile" || DOCKERFILE="-f ${DOCKERFILE}"
+    [[ -z $OVERRIDEDIR ]] && DIR="." || DIR=$OVERRIDEDIR
 
 	local PARENT="$(get_docker_parent $NAME)"
 	[[ -n $PARENT ]] && docker_build_if_needed $PARENT
         [[ -n $NOCACHE ]] && CACHE="--no-cache"
-	(cd $BASE_DIR/$NAME && docker build $DOCKERFILE $CACHE $OTHERARGS -t $NAME -t $NAME:$(gettimestamp) . )
+	(cd $BASE_DIR/$NAME && docker build $DOCKERFILE $CACHE $OTHERARGS -t $NAME -t $NAME:$(gettimestamp) $DIR )
 }
 
 # Builds a container if it doesn't already have a latest
@@ -31,5 +33,5 @@ docker_build_if_needed() {
 get_docker_parent() {
 	local CHILD=$1
 	[[ $CHILD == "base" ]] && exit 0
-	grep -i  "^FROM" $BASE_DIR/$CHILD/Dockerfile  | awk '{print $2}' | cut -d: -f1
+	grep -i  "^FROM" $BASE_DIR/$CHILD/Dockerfile  | head -n 1 | awk '{print $2}' | cut -d: -f1
 }
