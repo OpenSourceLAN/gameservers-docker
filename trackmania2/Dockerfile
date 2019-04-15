@@ -12,6 +12,6 @@ RUN unzip /tm/*.zip
 #ADD tracklist.cfg /tm/GameData/Tracks/
 #ADD dedicated_cfg.txt /tm/GameData/Config/
 
-Add start_server.sh /tm/
+Add start_*.sh /tm/
 
 CMD ["/tm/start_tm2_canyon.sh"]

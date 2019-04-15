@@ -14,7 +14,8 @@ sed -i "s/RconPassword=.*/RconPassword=$RCON_PASSWORD/" /unreal/LinuxServer/Unre
 GAME_OPTS="$MAP?MaxPlayers=$MAXPLAYERS?$@"
 
 [[ -n $SV_PASSWORD ]] && GAME_OPTS="$GAME_OPTS?ServerPassword=$SV_PASSWORD"
-
+[[ -n $GOALSCORE ]] && GAME_OPTS="$GAME_OPTS?goalscore=$GOALSCORE"
+[[ -n $TIMELIMIT ]] && GAME_OPTS="$GAME_OPTS?timelimit=$TIMELIMIT"
 
 cd LinuxServer/Engine/Binaries/Linux
 chmod +x UE4Server-Linux-Shipping
