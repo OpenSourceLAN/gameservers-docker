@@ -2,6 +2,10 @@
 
 . ../common.sh
 
+# build out of the main tf2-prophunt directory so that we can re-use its downloads
+docker_build tf2-prophunt-web ../tf2-prophunt/web.Dockerfile "" ../tf2-prophunt
+
+exit 0
 
 if [[ ! `ls mmsource-*-linux.tar.gz` ]]
 then
@@ -36,12 +40,9 @@ then
 	curl -o $TF2ITEMSFILENAME $TF2ITEMSURL
 fi
 
-[[ -f prophunt-source.zip ]] || wget -O prophunt-source.zip https://github.com/OpenSourceLAN/sourcemod-prophunt/archive/master.zip || (echo "couldn't download PropHunt source" && exit 1)
-
+[[ -f prophuntredux.zip ]] || curl -o prophuntredux.zip "https://forums.alliedmods.net/attachment.php?attachmentid=146505&d=1441898056" || (echo "Coudln't download prophunt" && exit 1)
 [[ -f sm_observerpoint.smx ]] || curl -o sm_observerpoint.smx "http://www.sourcemod.net/vbcompiler.php?file_id=34433" || (echo "Coudln't download observerpoint" && exit 1)
 
 [[ -f PHMapEssentialsBZ2.7z ]] || curl -L -o PHMapEssentialsBZ2.7z "https://github.com/powerlord/sourcemod-prophunt/releases/download/maps/PHMapEssentialsBZ2.7z" || (echo "Coudln't download prophunt maps" && exit 1)
-
-
 
 docker_build tf2-prophunt

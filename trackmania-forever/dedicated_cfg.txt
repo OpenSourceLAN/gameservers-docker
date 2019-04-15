@@ -12,7 +12,7 @@
 		</level>
 		<level>
 			<name>User</name>
-			<password>User</password>
+			<password>UserPassword</password>
 		</level>
 	</authorization_levels>
 	
