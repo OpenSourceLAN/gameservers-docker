@@ -1,19 +1,31 @@
 FROM base
 
-RUN apt-get install -y libsdl1.2debian
-RUN apt-get install -y libfontconfig1
+RUN apt-get update && \
+	apt-get install -y libsdl1.2debian \
+	libfontconfig1 && \
+	adduser openttd && \
+	mkdir -p /openttd/extract && \
+	chown -R openttd:openttd /openttd
 
-RUN adduser openttd && mkdir -p /openttd/extract && chown -R openttd:openttd /openttd
+USER openttd
 WORKDIR /openttd
 
-ADD opengfx*.zip openmsx*.zip opensfx*.zip openttd*.tar.gz /openttd/
-RUN mv openttd-*-linux-generic-amd64/* .
-RUN unzip openmsx*.zip -d /openttd/extract/
-RUN unzip opensfx*.zip -d /openttd/extract/
-RUN unzip opengfx*.zip -d /openttd/extract/ && tar -xf /openttd/extract/opengfx*.tar -C /openttd/extract/
-RUN mv --no-clobber /openttd/extract/*/* /openttd/baseset/
+ADD download.sh .
 
-RUN chown -R openttd:openttd /openttd
-USER openttd
+RUN ./download.sh && \
+	mkdir -p baseset/opengfx/ && \
+	mkdir -p baseset/openmsx/ && \
+	mkdir -p baseset/opensfx/ && \
+	tar -xf openttd-*-linux-generic-amd64.tar.gz -C extract/ && \
+	mv --no-clobber extract/openttd-*-linux-generic-amd64/* . && \
+	unzip 'opengfx*.zip' -d extract/ && \
+	tar -xf extract/opengfx-*.tar -C extract/ && \
+	mv --no-clobber extract/opengfx-*/* baseset/opengfx/ && \
+	unzip 'openmsx*.zip' -d extract/ && \
+	mv --no-clobber extract/openmsx-*/* baseset/openmsx/ && \
+	unzip 'opensfx*.zip' -d extract/ && \
+	mv --no-clobber extract/opensfx-*/* baseset/opensfx/
 
-CMD ["./start-openttd.sh"]
+ADD start.sh .
+
+ENTRYPOINT ["./start.sh"]
