@@ -4,11 +4,11 @@ RUN apt-get update && \
 	apt-get install -y libsdl1.2debian \
 	libfontconfig1 && \
 	adduser openttd && \
-	mkdir -p /home/openttd/extract && \
-	chown -R openttd:openttd /home/openttd/extract
+	mkdir -p /openttd/extract && \
+	chown -R openttd:openttd /openttd
 
 USER openttd
-WORKDIR /home/openttd
+WORKDIR /openttd
 
 ADD download.sh .
 
@@ -26,6 +26,6 @@ RUN ./download.sh && \
 	unzip 'opensfx*.zip' -d extract/ && \
 	mv --no-clobber extract/opensfx-*/* baseset/opensfx/
 
-ADD start-openttd.sh /home/openttd/start-openttd.sh
+ADD start.sh .
 
-ENTRYPOINT ["./start-openttd.sh"]
+ENTRYPOINT ["./start.sh"]

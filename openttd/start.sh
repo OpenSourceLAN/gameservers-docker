@@ -4,9 +4,9 @@
 
 # [network]
 [[ -z $SERVER_NAME ]] && SERVER_NAME="OpenTTD Server"
-[[ -n $SERVER_PASSWORD ]] && SERVER_PASSWORD="$SERVER_PASSWORD"
-[[ -n $RCON_PASSWORD ]] && RCON_PASSWORD="$RCON_PASSWORD"
-[[ -n $ADMIN_PASSWORD ]] && ADMIN_PASSWORD="$ADMIN_PASSWORD"
+[[ -n $SERVER_PASSWORD ]] && SERVER_PASSWORD=""
+[[ -n $RCON_PASSWORD ]] && RCON_PASSWORD="changeme"
+[[ -n $ADMIN_PASSWORD ]] && ADMIN_PASSWORD="changeme"
 [[ -z $MIN_ACTIVE_CLIENTS ]] && MIN_ACTIVE_CLIENTS=1
 
 # [vehicle]
@@ -29,20 +29,23 @@
 
 # [difficulty]
 [[ -z $DISASTERS ]] && DISASTERS=false
-[[ -z $TERRAIN_TYPE ]] && TERRAIN_TYPE=temperate
+[[ -z $INDUSTRY_DENSITY ]] && INDUSTRY_DENSITY=5
+[[ -z $NUMBER_TOWNS ]] && NUMBER_TOWNS=5
+[[ -z $QUANTITY_SEA_LAKES ]] && QUANTITY_SEA_LAKES=0
+[[ -z $TERRAIN_TYPE ]] && TERRAIN_TYPE=2
 [[ -z $MAX_NO_COMPETITORS ]] && MAX_NO_COMPETITORS=0
 
 # [game_creation]
 [[ -z $MAP_X ]] && MAP_X=9
 [[ -z $MAP_Y ]] && MAP_Y=9
 [[ -z $STARTING_YEAR ]] && STARTING_YEAR=1970
-[[ -z $LANDSCAPE ]] && $LANDSCAPE=temperate
+[[ -z $LANDSCAPE ]] && LANDSCAPE=temperate
 
 # [gui]
 [[ -z $AUTOSAVE ]] && AUTOSAVE=yearly
 
-mkdir -p /home/openttd/.openttd/
-cat <<EOF >/home/openttd/.openttd/openttd.cfg
+mkdir -p /openttd/.openttd/
+cat <<EOF >/openttd/.openttd/openttd.cfg
 [network]
 server_name = $SERVER_NAME
 server_password = $SERVER_PASSWORD
@@ -71,6 +74,8 @@ currency = $CURRENCY
 [difficulty]
 disasters = $DISASTERS
 terrain_type = $TERRAIN_TYPE
+number_towns = $NUMBER_TOWNS
+quantity_sea_lakes = $QUANTITY_SEA_LAKES
 max_no_competitors = $MAX_NO_COMPETITORS
 
 [game_creation]
