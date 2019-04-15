@@ -16,6 +16,6 @@ ARG CACHE_DATE
 RUN ./steamcmd.sh +login anonymous +force_install_dir ../css +app_update 232330 +quit
 
 WORKDIR /steam/css/
-ADD start*.sh .
+ADD start.sh .
 
-CMD ["./start-css.sh"]
+ENTRYPOINT ["./start.sh"]

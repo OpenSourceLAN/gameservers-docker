@@ -1,6 +1,19 @@
 # Counterstrike Source
 
-The following configuration is available via setting environment variables
+Counterstrike Source server without plugins.
+
+## Build notes
+To catch updates since the original image was built, run:
+
+ ```
+docker build --build-arg CACHE_DATE="$(date)"
+```
+
+This will re-use the previously built image as a base instead of re-downloading everything again.
+
+## Environment variables
+
+The following configuration is available via setting environment variables:
 
 ```
 hostname $SV_HOSTNAME
@@ -28,3 +41,4 @@ bot_allow_snipers $BOT_ALLOW_SNIPERS
 bot_allow_machine_guns $BOT_ALLOW_MACHINE_GUNS
 bot_allow_sub_machine_guns $BOT_ALLOW_SUB_MACHINE_GUNS
 ```
+
