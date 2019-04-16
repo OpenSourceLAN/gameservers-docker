@@ -14,5 +14,3 @@ RUN tar -xf steamcmd_linux.tar.gz
 
 
 RUN ./steamcmd.sh +login anonymous +quit
-
-
