@@ -4,6 +4,8 @@
 
 For more information see https://wiki.openttd.org/Openttd.cfg
 
+Supported configuration variables:
+
 ### [network]
 * `SERVER_NAME`
 * `SERVER_PASSWORD`
@@ -20,6 +22,11 @@ For more information see https://wiki.openttd.org/Openttd.cfg
 * `ROADVEH_ACCELERATION_MODEL`
 * `TRAIN_ACCELERATION_MODEL`
 
+### [economy]
+* `FOUND_TOWN`
+* `LARGER_TOWNS`
+* `MULTIPLE_INDUSTRY_PER_TOWN`
+
 ### [linkgraph]
 * `DISTRIBUTION_PAX`
 * `DISTRIBUTION_MAIL`
@@ -32,6 +39,10 @@ For more information see https://wiki.openttd.org/Openttd.cfg
 ### [difficulty]
 * `DISASTERS`
 * `TERRAIN_TYPE`
+* `INDUSTRY_DENSITY`
+* `NUMBER_INDUSTRIES`
+* `NUMBER_TOWNS`
+* `QUANTITY_SEA_LAKES`
 * `MAX_NO_COMPETITORS`
 
 ### [game_creation]
@@ -39,6 +50,7 @@ For more information see https://wiki.openttd.org/Openttd.cfg
 * `MAP_Y`
 * `STARTING_YEAR`
 * `LANDSCAPE`
+* `TOWN_NAME`
 
 ### [gui]
 * `AUTOSAVE`
