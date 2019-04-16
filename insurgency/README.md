@@ -41,3 +41,8 @@ Other configurable environment variables:
 * `SERVER_CFG` (look at your local steamapps\common\insurgency2\insurgency\cfg)
 * `MAP` (map gametype e.g. market skirmish)
 * `TICKRATE`
+
+## Troubleshooting
+
+### I can't see the LAN Server!
+* Try disabling `Automatic Metric` and entering `1` for your LAN/WiFi adapter

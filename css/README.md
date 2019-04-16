@@ -41,4 +41,7 @@ bot_allow_snipers $BOT_ALLOW_SNIPERS
 bot_allow_machine_guns $BOT_ALLOW_MACHINE_GUNS
 bot_allow_sub_machine_guns $BOT_ALLOW_SUB_MACHINE_GUNS
 ```
+## Troubleshooting
 
+### I can't see the LAN Server!
+* Try disabling `Automatic Metric` and entering `1` for your LAN/WiFi adapter
