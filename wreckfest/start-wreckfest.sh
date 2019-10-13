@@ -10,6 +10,7 @@
 [[ -z $TIME_LIMIT ]] && TIME_LIMIT="20"
 # set this to 0 and the first person to join gets admin on server
 [[ -z $OWNER_DISABLED ]] && OWNER_DISABLED=1
+[[ -z $WEATHER ]] && WEATHER="0"
 
 cat <<EOF > /steam/wreckfest/server_config.cfg
 # Note: You can also set server parameters from the command line with -server_set PARAM=VALUE PARAM=VALUE ...
@@ -76,7 +77,7 @@ car_class_restriction=a
 car_restriction=
 
 # Disallow use of special vehicles
-special_vehicles_disabled=0
+special_vehicles_disabled=$SPECIAL_VEHICLE_DISABLED
 
 # Disable car resets
 car_reset_disabled=0
@@ -88,7 +89,7 @@ car_reset_delay=0
 wrong_way_limiter_disabled=0
 
 # Set event weather, list available weather names with command: weathers
-weather=
+weather=$WEATHER
 
 # Set server update frequency to low or high
 frequency=high
