@@ -11,4 +11,4 @@ RUN ./steamcmd.sh +login anonymous +@sSteamCmdForcePlatformType windows +force_i
 
 WORKDIR /steam/wreckfest
 ADD start*.sh /steam/wreckfest/
-CMD ["./start-wreckfest.sh"]
+CMD ["Xvfb & DISPLAY=:0 ./start-wreckfest.sh"]
