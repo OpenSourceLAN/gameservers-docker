@@ -1,17 +1,27 @@
 FROM steamcmd
 
+# Dear srcds, plz don't crash. We have brought you these offerings.
+USER root
+RUN dpkg --add-architecture i386; apt-get update;  apt-get install -y libstdc++6:i386 libcurl4-gnutls-dev:i386
+
+ENV GAME=csgo
+ENV APP_ID=740
+
+RUN mkdir -p /steam/${GAME}/.cache/ \
+  && touch /steam/${GAME}/.cache/empty
+WORKDIR /steam/${GAME}/
+COPY .cache .
+
+RUN chown -R steam /steam/${GAME}/ \
+  && mv .cache/* . \
+  && rm -fr .cache
+
+COPY metamod.vdf,\
+start.sh\
+ .
+
 USER steam
-WORKDIR /steam/steamcmd_linux
-RUN mkdir -p /steam/csgo \
-  && ./steamcmd.sh +login anonymous +force_install_dir ../csgo +app_update 740 +quit
 
-ARG CACHE_DATE
-# do another update to catch updates since the original image was built
-# need to run docker build --build-arg CACHE_DATE="$(date)"
-RUN ./steamcmd.sh +login anonymous +force_install_dir ../csgo +app_update 740 +quit
+RUN /steam/steamcmd_linux/steamcmd.sh +login anonymous +force_install_dir ../${GAME} +app_update ${APP_ID} +quit
 
-ADD start.sh /steam/csgo/
-
-WORKDIR /steam/csgo
-
-CMD ["./start.sh"]
+ENTRYPOINT ["./start.sh"]

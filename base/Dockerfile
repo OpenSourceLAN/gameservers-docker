@@ -1,4 +1,7 @@
-FROM ubuntu:16.04
+ARG DISTRO="focal"
+
+FROM ubuntu:${DISTRO}
+
 ARG TZ="Etc/UTC"
 RUN sed -i 's/archive.ubuntu.com/au.archive.ubuntu.com/' /etc/apt/sources.list
 RUN apt-get update  && apt-get dist-upgrade -y &&\
@@ -6,5 +9,3 @@ RUN apt-get update  && apt-get dist-upgrade -y &&\
 	apt-get clean
 RUN echo "$TZ" > /etc/timezone
 RUN  ln -fs /usr/share/zoneinfo/$TZ /etc/localtime
-
-# add to base install: 

@@ -1,0 +1,445 @@
+#Server main settings
+server_name: My Server Name
+#default - uses server_name
+player_list_title: default
+player_list_title_rate: default
+serverinfo_pastebin_id: 7wV681fT
+server_ip: auto
+max_players: 20
+server_tickrate: 60
+use_reserved_slots: true
+lobby_waiting_time: default
+ipv4_bind_ip: 0.0.0.0
+ipv6_bind_ip: ::
+contact_email: default
+
+#Spawn settings
+minimum_MTF_time_to_spawn: 280
+maximum_MTF_time_to_spawn: 350
+maximum_MTF_respawn_amount: 15
+maximum_CI_respawn_amount: 15
+priority_mtf_respawn: true
+use_crypto_rng: false
+team_respawn_queue: 40143140314414041340
+smart_class_picker: true
+
+## Player Info Range ##
+# This controls the default range that the player information text appears on clients.
+player_info_range: 10 # Default is 10.
+
+## Respawn ticket system settings ##
+
+# Enables the respawn tickets system.
+# Each NTF or CI player spawned in consumes one ticket.
+# We recommend keeping this on for game balance!
+#
+# Warning: Even if you disable the system, the tickets ratio for MTF/CI will still determine their spawn chance. 
+respawn_tickets_enable: true
+
+# Ticket counts (initial)
+# The ratio of MTF-to-CI tickets directly determines which team has a higher chance of spawning.
+# The initial settings (24:14) give around 36.8% chance for the CI to spawn instead of the MTF.
+# The CI spawn chance can be calculated by this formula: CI_TICKETS / (MTF_TICKETS + CI_TICKETS) * 100%
+respawn_tickets_mtf_initial_count: 24
+respawn_tickets_ci_initial_count: 14
+
+# Ticket counts (events)
+respawn_tickets_mtf_classd_cuffed_escape_count: 1
+respawn_tickets_mtf_scientist_escape_count: 1
+respawn_tickets_mtf_scp_hurt_escape_count: 1
+respawn_tickets_ci_classd_escape_count: 1
+respawn_tickets_ci_scientist_cuffed_escape_count: 2
+respawn_tickets_ci_scientist_died_count: 1
+respawn_tickets_ci_scp_item_count: 2
+
+# Ticket misc settings
+# The percentage of health an SCP must lose to trigger the 'scp_hurt' tickets.
+respawn_tickets_mtf_scp_hurt_interval: 0.25
+
+
+
+## Stamina system settings ##
+
+# The percentage of stamina used per second while sprinting.
+# 0.05 = 5%, 0.33 = 33%, etc.
+# NOTE: Stamina is currently only utilized on humans.
+# 0 to disable, but this *will* cause weirdness with status effects
+# and other mechanics, so we recommend keeping it on!
+stamina_balance_use: 0.05
+
+# The time (in seconds) that newly-spawned players can sprint
+# without consuming stamina. Used to reduce visual artifacts.
+# We recommend to put it at least 2 seconds
+stamina_balance_immunity: 3
+
+# The seconds that must pass before stamina starts regenerating after
+the player stops sprinting.
+# Lower values are more liekly to be exploited by players
+# Higher higher can be annoying to players.
+stamina_balance_regen_cd: 1
+
+# How fast the stamina regenerates.
+# This is a multiplier for the default setting,
+# which is based on a curve - not a specific value.
+stamina_balance_regen_speed: 1
+
+# Multiplier for human walk speed.
+# Default speed before multiplier is 4.5 m/s.
+stamina_balance_walk_speed: 1.2
+
+# Multiplier for human sprint speed.
+# Default speed before multiplier is 7 m/s.
+stamina_balance_sprint_speed: 1.05
+
+
+
+#Random-stuff settings (-1: random)
+server_forced_class: -1
+map_seed: -1
+
+#Misc gameplay settings
+intercom_cooldown: 120
+intercom_max_speech_time: 20
+auto_round_restart_time: 10
+friendly_fire: false
+friendly_fire_multiplier: 1
+warhead_tminus_start_duration: 90
+human_grenade_multiplier: 0.7
+scp_grenade_multiplier: 1
+lock_gates_on_countdown: true
+isolate_zones_on_countdown: false
+open_doors_on_countdown: true
+keep_items_after_escaping: true
+allow_playing_as_tutorial: true
+disable_decontamination: false
+096_destroy_locked_doors: true
+no_holidays: false
+allow_disarmed_interaction: false
+914_mode: default
+sinkhole_slow_amount: 30
+sinkhole_spawn_chance: 0
+disconnect_drop: true
+end_round_on_one_player: false
+
+# Time in seconds till ragdolls are removed. Set below 1 to disable.
+ragdoll_cleanup_time: 0
+
+#How many seconds someone is AFK sitting in their spawn location before they are kicked. Set to 0 or lower to disable. (Due to the 079 intro screen 079 has 13 extra seconds to be AFK.)
+afk_time: 90
+constantly_check_afk: false
+
+
+#Pocket Dimension settings
+pd_exit_count: 2
+pd_random_exit_rids:
+pd_random_exit_rids_after_decontamination:
+pd_refresh_exit: false
+
+#Disarmer settings
+mtf_can_cuff_researchers: true
+ci_can_cuff_class_d: true
+cuffed_escapee_change_team: true
+
+#Spawn Protect settings
+spawn_protect_disable: true
+spawn_protect_time: 30
+spawn_protect_team: [1, 2]
+spawn_protect_allow_dmg: true
+
+#Auto Event Broadcast settings
+auto_warhead_broadcast_enabled: false
+auto_warhead_broadcast_message: The Alpha Warhead is being detonated
+auto_warhead_broadcast_time: 10
+auto_warhead_detonate_broadcast: The Alpha Warhead has been detonated now
+auto_warhead_detonate_broadcast_time: 10
+auto_decon_broadcast_enabled: false
+auto_decon_broadcast_message: Light Containment Zone is now decontaminated
+auto_decon_broadcast_time: 10
+
+#Grenades chaining options
+#-1 to unlimited, 0 to disable chain reaction
+
+#max amount of grenades that can be activated by a single grenade
+grenade_chain_limit: 10
+
+#limit of length of grenades chain
+grenade_chain_length_limit: 4
+
+
+
+#Security & Anticheat (default settings are good enough in most cases)
+#Please type !private in your server console, if your server is verified, but you want to keep it hidden from the list. Type !public to make it public again.
+online_mode: true
+ip_banning: true
+enable_whitelist: false
+forward_ports: true
+enable_query: false
+query_port_shift: 0
+query_use_IPv6: true
+administrator_query_password: none
+connections_delay_time: 5
+enable_sync_command_binding: false
+ratelimit_kick: true
+same_account_joining: false
+anticheat_console_output: false
+enable_fast_round_restart: true
+fast_round_restart_delay: 3.2
+
+#Enables challenge during preauthentication
+preauth_challenge: true
+
+#Reply - prevents from flooding server with preauth requests from spoofed IP addresses
+#MD5 or SHA1 - prevents from flooding with preauth requests from legitimate IP addresses as well. Requires additional time to join the server.
+preauth_challenge_mode: reply
+preauth_challenge_base_length: 10
+preauth_challenge_time_window: 12
+preauth_challenge_clean_period: 4
+
+#Only for MD5 and SHA1 challenges (higher value = longer time required to join the server)
+preauth_challenge_secret_length: 2
+
+#This enforces the player to be using same IP address to connect to the game and authenticate.
+#Enabling this blocks proxies. Not enforced if player joined from IPv4 and authenticated from IPv6 or viceversa.
+#Situations with combinating IPv4 and IPv6 addresses are being checked on central servers after authentication (only for servers on public list).
+enforce_same_ip: true
+no_enforcement_for_local_ip_addresses: true
+
+#This enforces that the IP address used to connect to the game and authenticate must be assigned to the same Internet Service Provider (ISP).
+#Works only on servers on the public list. This is less restrictive that "enforce_same_ip" and blocks most of the proxies.
+enforce_same_asn: true
+
+#Connections ratelimiting
+#Ratelimit time windows define how often user with the same IP/UserID can initialize new connection (once per X seconds).
+enable_ip_ratelimit: true
+enable_userid_ratelimit: true
+ip_ratelimit_window: 3
+userid_ratelimit_window: 5
+
+
+
+## Item limits ##
+# Ammo settings in this config are sorted as [X, Y, Z]
+# X = 5.56mm (E-11-SR)
+# Y = 7.62mm (Logicer, MP7)
+# Z = 9mm (P90, COM-15)
+
+# Default ammo that each class gets on respawn
+class_d_personnel_defaultammo: [0, 0, 0]
+nine_tailed_fox_scientist_defaultammo: [120, 20, 20]
+scientist_defaultammo: [0, 0, 0]
+chaos_insurgency_defaultammo: [0, 100, 0]
+nine_tailed_fox_lieutenant_defaultammo: [80, 0, 50]
+nine_tailed_fox_commander_defaultammo: [120, 0, 100]
+nine_tailed_fox_cadet_defaultammo: [40, 0, 100]
+tutorial_defaultammo: [0, 0, 0]
+facility_guard_defaultammo: [0, 35, 0]
+
+# Ammo limits, values from 0 to 65.5k, where 0 = unlimited.
+class_d_personnel_ammolimit: [80, 70, 50]
+nine_tailed_fox_scientist_ammolimit: [160, 100, 200]
+scientist_ammolimit: [80, 70, 50]
+chaos_insurgency_ammolimit: [80, 200, 100]
+nine_tailed_fox_lieutenant_ammolimit: [160, 100, 200]
+nine_tailed_fox_commander_ammolimit: [160, 100, 200]
+nine_tailed_fox_cadet_ammolimit: [160, 100, 200]
+tutorial_ammolimit: [160, 100, 200]
+facility_guard_ammolimit: [160, 100, 200]
+
+# Item limits - values range from 0 to 8.
+# Values of 0 are NOT unlimited and will prevent item pickups of that type entirely!
+# The inventory can hold a max of 8 items,
+# so a limit of 8 is effectively unlimited.
+itemlimit_keycard: 3
+itemlimit_medical_item: 3
+itemlimit_weapon: 2
+itemlimit_grenade: 3
+itemlimit_scp_item: 3
+
+
+
+#Friendly fire punishment
+#Action is performed if someone either kills enough teammates OR deals enough damage to teammates.
+#Set kills or damage to 0 to disable that threshold.
+#Detectors priority: Respawn (kill), Window (kill), Life (kill), Round (kill), Respawn (damage), Window (damage), Life (damage), Round (damage)
+#Actions: kill, kick, ban, noop (no operation - do nothing, eg. to enable logging)
+#Damage dealt AFTER round end is ignored.
+
+ff_detector_global_broadcast_seconds: 5
+ff_detector_global_adminchat_seconds: 6
+
+#If enabled Class D personnel can damage or kill other Class D personnel without being punished for it
+ff_detector_classD_can_damage_classD: false
+
+#If set to "none" then the webhook for cheaters reporting will be used
+ff_detector_webhook_url: none
+
+
+#Per round
+ff_detector_round_enabled: true
+ff_detector_round_kills: 6
+ff_detector_round_damage: 500
+
+ff_detector_round_action: ban
+ff_detector_round_ban_time: 24h
+ff_detector_round_bankick_reason: You have been automatically banned for teamkilling.
+ff_detector_round_kill_reason: You have been automatically killed for teamkilling.
+
+ff_detector_round_adminchat_enable: false
+ff_detector_round_adminchat_message: %nick has been banned for teamkilling (round detector).
+
+ff_detector_round_broadcast_enable: true
+ff_detector_round_broadcast_message: %nick has been automatically banned for teamkilling.
+
+ff_detector_round_webhook_report: true
+
+
+#Per life (resets on respawn)
+ff_detector_life_enabled: true
+ff_detector_life_kills: 4
+ff_detector_life_damage: 300
+
+ff_detector_life_action: ban
+ff_detector_life_ban_time: 24h
+ff_detector_life_bankick_reason: You have been automatically banned for teamkilling.
+ff_detector_life_kill_reason: You have been automatically killed for teamkilling.
+
+ff_detector_life_adminchat_enable: false
+ff_detector_life_adminchat_message: %nick has been banned for teamkilling (life detector).
+
+ff_detector_life_broadcast_enable: true
+ff_detector_life_broadcast_message: %nick has been automatically banned for teamkilling.
+
+ff_detector_life_webhook_report: true
+
+
+#In a specified time window
+ff_detector_window_enabled: true
+ff_detector_window_seconds: 180
+ff_detector_window_kills: 3
+ff_detector_window_damage: 250
+
+ff_detector_window_action: ban
+ff_detector_window_ban_time: 16h
+ff_detector_window_bankick_reason: You have been automatically banned for teamkilling.
+ff_detector_window_kill_reason: You have been automatically killed for teamkilling.
+
+ff_detector_window_adminchat_enable: false
+ff_detector_window_adminchat_message: %nick has been banned for teamkilling (window detector).
+
+ff_detector_window_broadcast_enable: true
+ff_detector_window_broadcast_message: %nick has been automatically banned for teamkilling.
+
+ff_detector_window_webhook_report: true
+
+
+#In a specified time window AFTER RESPAWN
+ff_detector_spawn_enabled: true
+ff_detector_spawn_window_seconds: 120
+ff_detector_spawn_kills: 2
+ff_detector_spawn_damage: 180
+
+ff_detector_spawn_action: ban
+ff_detector_spawn_ban_time: 48h
+ff_detector_spawn_bankick_reason: You have been automatically banned for teamkilling.
+ff_detector_spawn_kill_reason: You have been automatically killed for teamkilling.
+
+ff_detector_spawn_adminchat_enable: false
+ff_detector_spawn_adminchat_message: %nick has been banned for teamkilling (spawn detector).
+
+ff_detector_spawn_broadcast_enable: true
+ff_detector_spawn_broadcast_message: %nick has been automatically banned for teamkilling.
+
+ff_detector_spawn_webhook_report: true
+
+
+
+#Enable this if and ONLY if you use plugin or modification that provides custom whitelist.
+#This is only to mark the server on the public list as using a whitelist.
+#More information can be found in the Verified Server Rules.
+#Ignore this config key if your server is not verified.
+custom_whitelist: false
+
+#Enable this if and ONLY if you use plugin or modification that restricts access to the server (other than whitelist, eg. password).
+#This is only to mark the server on the public list as using access restriction.
+#More information can be found in the Verified Server Rules.
+#Ignore this config key if your server is not verified.
+server_access_restriction: false
+
+#Enable this if and ONLY if your server is a Custom Gamemode Server according to the definition that can be found in the Verified Server Rules.
+#Ignore this config key if your server is not verified.
+custom_gamemode_server: false
+
+#port_queue is for NONDEDICATED SERVERS ONLY
+port_queue:
+ - 7777
+ - 7778
+ - 7779
+ - 7780
+ - 7781
+ - 7782
+ - 7783
+ - 7784
+
+#Enabling this will automatically ban IP of players on the server that receives a Global Ban by a Global Moderator. (Defaults to false)
+gban_ban_ip: default
+
+ban_nickname_maxlength: default
+ban_nickname_trimunicode: default
+
+#Nickname filtering, using regex
+nickname_filter: default
+nickname_filter_replacement: default
+
+#Administrative actions broadcast options
+broadcast_kicks: false
+broadcast_kick_text: %nick% has been kicked from this server.
+broadcast_kick_duration: 5
+broadcast_bans: true
+broadcast_ban_text: %nick% has been banned from this server.
+broadcast_ban_duration: 5
+
+#Server idle mode
+idle_mode_enabled: true
+idle_mode_time: 5000
+idle_mode_preauth_time: 30000
+idle_mode_tickrate: 1
+
+#Player report
+report_send_using_discord_webhook: false
+report_discord_webhook_url: PleaseSetWebhookUrlHere
+report_username: Cheater Report
+report_avatar_url: default
+report_color: 14423100
+report_server_name: My SCP:SL Server
+report_header: Player Report
+report_content: Player has just been reported.
+
+#Restart options
+#Requires LocalAdmin or a fully compatible tool.
+
+#You can set autorestart of the server after a specified amount of rounds (0 - disabled).
+restart_after_rounds: 0
+
+#Amount of time after client should rejoin after a full server restart.
+#Adjust depending on your server restart time.
+full_restart_rejoin_time: 25
+
+
+#Geoblocking
+#If your server is on the public list, please refer to Verified Server Rules for more details.
+#Modes: none, whitelist, blacklist
+geoblocking_mode: none
+
+#If enabled, players on the whitelist are able to ignore geoblocking.
+geoblocking_ignore_whitelisted: true
+
+#ISO country codes, eg. PL, US, DE
+geoblocking_whitelist:
+ - AA
+ - AB
+ - AC
+
+geoblocking_blacklist:
+ - AA
+ - AB
+ - AC

@@ -1,6 +1,6 @@
 FROM base
 
-RUN useradd -m steam
+RUN useradd -m steam --create-home
 
 RUN mkdir -p /steam/steamcmd_linux
 

@@ -1,11 +1,12 @@
 FROM steamcmd
 
-# Dear srcds, plz don't crash. We have brought you these offerings.
-USER root
-RUN dpkg --add-architecture i386; apt-get update;  apt-get install -y libstdc++6:i386 libcurl4-gnutls-dev:i386
+ENV GAME=scpsl
+ENV APP_ID=996560
 
-ENV GAME=tf2
-ENV APP_ID=232250
+USER root
+# ugly hack for HOME variable not being properly read in LocalAdmin
+RUN mkdir "/SCP Secret Laboratory/" \
+  && chmod a+rw "/SCP Secret Laboratory/"
 
 RUN mkdir -p /steam/${GAME}/.cache/ \
   && touch /steam/${GAME}/.cache/empty
@@ -16,7 +17,9 @@ RUN chown -R steam /steam/${GAME}/ \
   && mv .cache/* . \
   && rm -fr .cache
 
-COPY start.sh .
+COPY *.txt\
+start.sh\
+ .
 
 USER steam
 

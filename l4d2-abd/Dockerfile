@@ -5,7 +5,9 @@ USER steam
 ADD download.sh .
 
 RUN ./download.sh
-RUN unzip l4dtoolz.zip -d /steam/l4d2/left4dead2/addons
+RUN mkdir -p /steam/l4d2/left4dead2/addons/sourcemod/extensions/
+RUN unzip l4dtoolz.zip -d /steam/l4d2/left4dead2/addons \
+  && unzip l4downtown.zip -d /steam/l4d2/left4dead2/addons/sourcemod/
 
 ADD start.sh .
 ENTRYPOINT ["./start.sh"]

@@ -1,0 +1,100 @@
+#Let's assign roles (you can modify them and create custom roles below)
+#UserID format is SteamId64Here@steam, DiscordUserIDHere@discord, etc...
+Members:
+ - SomeSteamId64@steam: owner
+ - SomeOtherSteamId64@steam: admin
+ - AnotherSteamId64@steam: admin
+ - SomeDiscordUserId@discord: moderator
+
+#Should Secret Lab development staff be able to use the Remote Admin?
+enable_staff_access: false
+
+#Should Secret Lab CEO and managers be able to use Remote Admin? (We do not abuse our powers) 
+enable_manager_access: true
+
+#Allow remote admin access for the banning team, to allow them searching and fightung cheaters globally
+enable_banteam_access: true
+
+#Enable reserved slots for the banning team (they are restricted by reserved slots limit set in the gameplay config)
+enable_banteam_reserved_slots: true
+
+#Allow the banning team to bypass georestrictions on the server
+enable_banteam_bypass_geoblocking: true
+
+#Let's define roles
+#use color "none" to disable badge
+#you can add own roles too
+#cover means that this local badge is more important than a global badge and will cover it
+#hidden means that this local badge is hiddeny by default (always you can use "hidetag" and "showtag" commands in game console or text-based remote admin)
+#kick_power is the power for kicking and banning that the member of this group has (can be from 0 to 255)
+#required_kick_power is the required kick power to kick or ban a member of this group (can be from 0 to 255)
+
+owner_badge: SERVER OWNER
+owner_color: red
+owner_cover: true
+owner_hidden: false
+owner_kick_power: 255
+owner_required_kick_power: 255
+
+admin_badge: ADMIN
+admin_color: red
+admin_cover: true
+admin_hidden: false
+admin_kick_power: 1
+admin_required_kick_power: 2
+
+moderator_badge: MODERATOR
+moderator_color: silver
+moderator_cover: true
+moderator_hidden: false
+moderator_kick_power: 0
+moderator_required_kick_power: 1
+
+#And add them to the roles list
+Roles:
+ - owner
+ - admin
+ - moderator
+
+#Let's setup permissions for roles
+#More info can be found on our wiki: https://en.scpslgame.com/index.php/Docs:Permissions
+Permissions:
+ - KickingAndShortTermBanning: [owner, admin, moderator]
+ - BanningUpToDay: [owner, admin, moderator]
+ - LongTermBanning: [owner, admin]
+ - ForceclassSelf: [owner, admin, moderator]
+ - ForceclassToSpectator: [owner, admin, moderator]
+ - ForceclassWithoutRestrictions: [owner, admin]
+ - GivingItems: [owner, admin]
+ - WarheadEvents: [owner, admin, moderator]
+ - RespawnEvents: [owner, admin]
+ - RoundEvents: [owner, admin, moderator]
+ - SetGroup: [owner]
+ - GameplayData: [owner, admin]
+ - Overwatch: [owner, admin, moderator]
+ - FacilityManagement: [owner, admin, moderator]
+ - PlayersManagement: [owner, admin]
+ - PermissionsManagement: [owner]
+ - ServerConsoleCommands: []
+ - ViewHiddenBadges: [owner, admin, moderator]
+ - ServerConfigs: [owner]
+ - Broadcasting: [owner, admin, moderator]
+ - PlayerSensitiveDataAccess: [owner, admin, moderator]
+ - Noclip: [owner, admin]
+ - AFKImmunity: [owner, admin]
+ - AdminChat: [owner, admin, moderator]
+ - ViewHiddenGlobalBadges: [owner, admin, moderator]
+ - Announcer: [owner, admin]
+ - Effects: [owner, admin]
+ - FriendlyFireDetectorImmunity: [owner, admin, moderator]
+ - FriendlyFireDetectorTempDisable: [owner, admin]
+
+#Set to "none" in order to disable password.
+#WE DON'T RECOMMEND USING PASSWORD!!!
+#SETUP STEAMID AUTHENTICATION INSTEAD (of the top of this config file)!
+override_password: none
+override_password_role: owner
+
+#Allows running central server commands (they are prefixed with "!") using "sudo"/"cron" command in RA (requires ServerConsoleCommands permission).
+#Don't turn on unless you fully trust all people with this permission, they needs to run that commands from RA and you know what are you doing
+allow_central_server_commands_as_ServerConsoleCommands: false

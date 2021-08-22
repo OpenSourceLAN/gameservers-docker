@@ -4,18 +4,22 @@ FROM steamcmd
 USER root
 RUN dpkg --add-architecture i386; apt-get update;  apt-get install -y libstdc++6:i386 libcurl4-gnutls-dev:i386
 
+ENV GAME=css
+ENV APP_ID=232330
+
+RUN mkdir -p /steam/${GAME}/.cache/ \
+  && touch /steam/${GAME}/.cache/empty
+WORKDIR /steam/${GAME}/
+COPY .cache .
+
+RUN chown -R steam /steam/${GAME}/ \
+  && mv .cache/* . \
+  && rm -fr .cache
+
+COPY start.sh .
+
 USER steam
-RUN mkdir -p /steam/css
 
-WORKDIR /steam/steamcmd_linux
-RUN ./steamcmd.sh +login anonymous +force_install_dir ../css +app_update 232330 +quit
-
-ARG CACHE_DATE
-# do another update to catch updates since the original image was built
-# need to run docker build --build-arg CACHE_DATE="$(date)"
-RUN ./steamcmd.sh +login anonymous +force_install_dir ../css +app_update 232330 +quit
-
-WORKDIR /steam/css/
-ADD start.sh .
+RUN /steam/steamcmd_linux/steamcmd.sh +login anonymous +force_install_dir ../${GAME} +app_update ${APP_ID} +quit
 
 ENTRYPOINT ["./start.sh"]

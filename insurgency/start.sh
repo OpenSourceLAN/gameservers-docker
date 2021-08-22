@@ -2,6 +2,7 @@
 
 [[ $LAN -ge 1 ]] && LAN="1" || LAN="0"
 [[ -n $MAXPLAYERS ]] && MAXPLAYERS="$MAXPLAYERS"
+[[ -n $MP_COOP_LOBBYSIZE ]] && MP_COOP_LOBBYSIZE="$MP_COOP_LOBBYSIZE"
 
 [[ -z $RCON_PASSWORD ]] && RCON_PASSWORD="changeme"
 [[ -n $SV_PASSWORD ]] && SV_PASSWORD=$SV_PASSWORD
@@ -55,8 +56,9 @@ cat <<EOF >/steam/insurgency2/insurgency/cfg/server.cfg
 hostname $SV_HOSTNAME
 rcon_password $RCON_PASSWORD
 sv_password $SV_PASSWORD
+mp_coop_lobbysize $MP_COOP_LOBBYSIZE
 
 "mapcyclefile" "$MAPCYCLEFILE"
 EOF
 
-exec ./srcds_run -game insurgency +maxplayers $MAXPLAYERS +map "$MAP" +sv_lan $LAN -ip 0.0.0.0 -port 27015 -tickrate $TICKRATE +exec $SERVER_CFG
+exec ./srcds_run -game insurgency +maxplayers $MAXPLAYERS +map "$MAP" +sv_lan $LAN -ip 0.0.0.0 -port 27015 -tickrate $TICKRATE -insecure +exec $SERVER_CFG

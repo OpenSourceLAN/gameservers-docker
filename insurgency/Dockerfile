@@ -1,20 +1,25 @@
 FROM steamcmd
 
+# Dear srcds, plz don't crash. We have brought you these offerings.
+USER root
+RUN dpkg --add-architecture i386; apt-get update;  apt-get install -y libstdc++6:i386 libcurl4-gnutls-dev:i386
+
 USER root
 
+ENV GAME=insurgency2
+ENV APP_ID=237410
+
+RUN mkdir -p /steam/${GAME}/.cache/ \
+  && touch /steam/${GAME}/.cache/empty
+WORKDIR /steam/${GAME}/
+COPY . .
+
+RUN chown -R steam /steam/${GAME}/ \
+  && mv .cache/* . \
+  && rm -fr .cache
+
 USER steam
-WORKDIR /steam/steamcmd_linux
-RUN mkdir -p /steam/insurgency2
 
-RUN ./steamcmd.sh +login anonymous +force_install_dir ../insurgency2 +app_update 237410 +quit
-
-ARG CACHE_DATE
-# do another update to catch updates since the original image was built
-# need to run docker build --build-arg CACHE_DATE="$(date)"
-RUN ./steamcmd.sh +login anonymous +force_install_dir ../insurgency2 +app_update 237410 +quit
-
-ADD start.sh /steam/insurgency2/
-
-WORKDIR /steam/insurgency2
+RUN /steam/steamcmd_linux/steamcmd.sh +login anonymous +force_install_dir ../${GAME} +app_update ${APP_ID} +quit
 
 ENTRYPOINT ["./start.sh"]

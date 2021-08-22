@@ -1,7 +1,7 @@
 FROM base
 
 RUN apt-get update \
-  && apt-get install -y libsdl1.2debian libfontconfig1 liblzo2-2 \
+  && apt-get install -y libsdl1.2debian libfontconfig1 liblzo2-2 libfluidsynth2 libsdl2-2.0-0 \
   && adduser openttd \
   && mkdir -p /tmp \
   && chown -R openttd:openttd /tmp \
@@ -10,6 +10,7 @@ RUN apt-get update \
 
 WORKDIR /tmp
 
+ARG DISTRO="focal"
 ADD download.sh .
 RUN ./download.sh
 
