@@ -17,9 +17,9 @@ RUN chown -R steam /steam/${GAME}/ \
   && mv .cache/* . \
   && rm -fr .cache
 
-COPY *.txt\
-start.sh\
- .
+COPY *.txt \
+start.sh \
+./
 
 USER steam
 

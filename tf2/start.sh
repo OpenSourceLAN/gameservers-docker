@@ -39,15 +39,7 @@ if [[ -n $SOURCETV_ADDR ]]
 then
    echo "tv_title $HOSTNAME" > tf/cfg/hostname.cfg 
    exec ./srcds_run -game tf -console -maxplayers 64 +exec hostname.cfg +tv_relay $SOURCETV_ADDRESS $OTHER_ARGS $@
-
 else
-
    exec ./srcds_run -game tf +sv_lan $LAN -ip 0.0.0.0 $MAP -usercon $GAME_MODE $GAME_TYPE $MAXPLAYERS $MAPCYCLEFILE $OTHER_ARGS $@
-
-
 fi
-
-
 #echo '"STEAM_0:0:19457778" "@Full Admins"' > csgo/addons/sourcemod/configs/admins_simple.ini
-
-

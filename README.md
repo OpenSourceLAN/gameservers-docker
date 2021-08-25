@@ -1,3 +1,4 @@
+# gameservers-docker
 
 Putting game servers in Docker containers. Because it makes life easier.
 
@@ -8,8 +9,10 @@ or sourcemod for srcds), making it almost one command to install a server.
 No binaries are stored in this repo, so make sure you have internet to
 download them with.
 
-Includes a utility script `start_server.sh` which mounts save data to an
-external volume and sorts out networking for you.
+Includes utility scripts:
+
+- `start_server.sh` - mounts save data to an external volume and sorts out networking for you
+- `docker_build.sh` - builds the specified list of containers. e.g. `docker_build.sh css,css-metamod,tf2`
 
 ## Quick start
 
@@ -17,16 +20,18 @@ Assuming you are on a blank server with Git and docker installed:
 
 ```
 git clone https://github.com/OpenSourceLAN/gameservers-docker.git .
-./build.sh factorio
+```
+Check the game directory for existing templates and make your configurations before building.
+```
+./docker_build.sh factorio
 
 ./start_server.sh factorio
 # Or
 docker run -it --net=host -e "SERVER_NAME=Some really cool server"\
 -v `pwd`/save:`cat factorio/mounts` --name factorio factorio
-
 ```
 
-Most servers have environment variables that can be used to configure them.
+Most servers have environment variables that can be used to configure them after building them.
 Read the README.md file in each directory to see what is available.
 
 ## Tutorial

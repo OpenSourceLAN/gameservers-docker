@@ -16,9 +16,11 @@ RUN chown -R steam /steam/${GAME}/ \
   && mv .cache/* . \
   && rm -fr .cache
 
-COPY metamod.vdf,\
-start.sh\
- .
+COPY server.cfg \
+configure.sh \
+launch.sh \
+start.sh \
+./
 
 USER steam
 

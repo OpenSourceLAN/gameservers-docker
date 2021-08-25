@@ -1,5 +1,10 @@
+# CSGO
 
-Base CSGO start script which supports these environmetn variables:
+Copy and rename server.template.cfg into csgo to set additional config to build.
+
+# Environment variables
+
+The following configuration is available via setting environment variables
 
 * `SV_HOSTNAME` - sets the `hostname` of the server
 * `SERVER_TOKEN` - GSLT
@@ -11,4 +16,3 @@ Base CSGO start script which supports these environmetn variables:
 * `RCON_PASSWORD` - rcon password
 * `OTHER_ARGS` - other arguments to pass to command line 
 * `SOURCETV_ADDR` - make this server be a source TV relay and join the server specified
-
