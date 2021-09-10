@@ -139,4 +139,4 @@ log=
 
 EOF
 
-exec wine server/Wreckfest.exe -s server_config=server_config.cfg
+exec wine Wreckfest.exe -s server_config=server_config.cfg
