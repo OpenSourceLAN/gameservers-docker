@@ -12,6 +12,6 @@ gamedata/
 wads/
 RemoteControlExamples/
 .cache/
-
+tmp/
 server_files/
 .cache

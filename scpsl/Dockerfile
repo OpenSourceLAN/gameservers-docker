@@ -3,26 +3,28 @@ FROM steamcmd
 ENV GAME=scpsl
 ENV APP_ID=996560
 
-USER root
-# ugly hack for HOME variable not being properly read in LocalAdmin
-RUN mkdir "/SCP Secret Laboratory/" \
-  && chmod a+rw "/SCP Secret Laboratory/"
-
-RUN mkdir -p /steam/${GAME}/.cache/ \
-  && touch /steam/${GAME}/.cache/empty
-WORKDIR /steam/${GAME}/
-COPY .cache .
-
-RUN chown -R steam /steam/${GAME}/ \
-  && mv .cache/* . \
-  && rm -fr .cache
-
-COPY *.txt \
-start.sh \
-./
+RUN mkdir -p /steam/${GAME}/ \
+  && chown steam /steam/${GAME}/
 
 USER steam
 
-RUN /steam/steamcmd_linux/steamcmd.sh +login anonymous +force_install_dir ../${GAME} +app_update ${APP_ID} +quit
+WORKDIR /steam/${GAME}/
 
+RUN /steam/steamcmd_linux/steamcmd.sh +login anonymous +force_install_dir /steam/${GAME} +app_update ${APP_ID} +quit
+ARG CACHE_DATE
+RUN /steam/steamcmd_linux/steamcmd.sh +login anonymous +force_install_dir /steam/${GAME} +app_update ${APP_ID} +quit
+
+ENV SERVER_PORT=7777
+ENV GAME_DIR=/home/steam/.config/SCP\ Secret\ Laboratory
+ENV INSTANCE_DIR=${GAME_DIR}/config/${SERVER_PORT}/
+COPY *.txt "${INSTANCE_DIR}"
+
+USER root
+
+RUN chown -R steam:steam "${GAME_DIR}" \
+  && chmod u+rw "${GAME_DIR}"
+
+USER steam
+
+COPY start.sh .
 ENTRYPOINT ["./start.sh"]

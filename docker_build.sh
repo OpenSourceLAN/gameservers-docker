@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 BASE_DIR=$(pwd)
 
 mkdir -p .cache
@@ -19,13 +21,13 @@ do
         CACHE_DIR="${BASE_DIR}/.cache"
         GAME_CACHE_DIR="${CACHE_DIR}/${i}"
         if [[ -d "${GAME_CACHE_DIR}" ]]; then
-            echo "Copying existing master '.cache' for ${i}."
+            echo "Moving existing master '.cache' for ${i}."
             rm -fr .cache
-            cp -r "${GAME_CACHE_DIR}" .cache
+            mv "${GAME_CACHE_DIR}" .cache
         else
             echo "No existing master '.cache' for ${i} found."
         fi
-        docker build . -t ${i} || exit 1
+        docker build --progress=plain . -t ${i} || exit 1
         SHORT_UUID=$(uuidgen)
         SHORT_UUID=${SHORT_UUID%%-*}
         BUILD_ID="$i-build-${SHORT_UUID}"

@@ -1,0 +1,334 @@
+CommonUtilities:
+# Whether or not debug messages should be shown.
+  debug: false
+  # The SCP Roles able to use V to talk to humans.
+  scp_speech:
+  - Scp049
+  # Whether or not MTF/CI can 'escape' while disarmed to switch teams.
+  disarm_switch_teams: true
+  # Whether or not disarmed people will be prevented from interacting with doors/elevators.
+  restrictive_disarming: true
+  # The text displayed at the timed interval specified below.
+  timed_broadcast: <color=lime>This server is running </color><color=red>EXILED Common-Utilities</color><color=lime>, enjoy your stay!</color>
+  # The time each timed broadcast will be displayed.
+  timed_broadcast_duration: 5
+  # The delay between each timed broadcast. To disable timed broadcasts, set this to 0
+  timed_broadcast_delay: 300
+  # The message displayed to the player when they first join the server. Setting this to empty will disable these broadcasts.
+  join_message: <color=lime>Welcome %player%! Please read our rules!</color>
+  # The amount of time (in seconds) the join message is displayed.
+  join_message_duration: 5
+  # The amount of time (in seconds) after the round starts, before the facilities auto-nuke will start.
+  autonuke_time: 1500
+  # Wether or not the nuke should be unable to be disabled during the auto-nuke countdown.
+  autonuke_lock: true
+  # The message given to all players when the auto-nuke is triggered. A duration of 2 or more will be a text message on-screen. A duration of 1 makes it a cassie announcement. A duration of 0 disables it.
+  autonuke_broadcast:
+  # The broadcast content
+    content: The auto nuke has been activated.
+    # The broadcast duration
+    duration: 10
+    # The broadcast type
+    type: Normal
+    # Indicates whether the broadcast should be shown or not
+    show: true
+  # Whether or not to show player's health under their name when you look at them.
+  player_health_info: true
+  # Whether or not friendly fire should automatically turn on when a round ends (it will turn itself back off before the next round starts).
+  friendly_fire_on_round_end: false
+  # The multiplier applied to radio battery usage. Set to 0 to disable radio battery drain.
+  radio_battery_drain_multiplier: 1
+  # The color to use for lights while the warhead is active.
+  warhead_color:
+    r: 1
+    g: 0.2
+    b: 0.2
+    a: 1
+  # The maximum time, in seconds, that a player can be AFK before being kicked. Set to -1 to disable AFK system.
+  afk_limit: 120
+  # The list of starting items for roles. ItemName is the item to give them, and Chance is the percent chance of them spawning with it, and Group allows you to restrict the item to only players with certain RA groups (Leave this as 'none' to allow all players to get the item). You can specify the same item multiple times.
+  starting_inventories:
+    ClassD:
+      slot1:
+      - item_name: KeycardJanitor
+        chance: 10
+        group: none
+      - item_name: Coin
+        chance: 100
+        group: none
+      slot2:
+      - item_name: Flashlight
+        chance: 100
+        group: none
+      slot3: []
+      slot4: []
+      slot5: []
+      slot6: []
+      slot7: []
+      slot8: []
+      ammo:
+      - type: Ammo556x45
+        amount: 200
+        group: none
+  # The list of custom 914 recipies. Original is the item being upgraded, New is the item to upgrade to, and Chance is the percent chance of the upgrade happening. You can specify multiple upgrade choices for the same item.
+  scp914_item_changes:
+    Rough:
+    - original: KeycardO5
+      new: MicroHID
+      chance: 50
+  # The list of custom 914 recipies for roles. Original is the role to be changed, New is the new role to assign, Chance is the % chance of the upgrade occuring.
+  scp914_class_changes:
+    Rough:
+    - original: ClassD
+      new: Spectator
+      chance: 100
+      keep_inventory: true
+  # The list of 914 teleport settings. Note that if you set "zone" to anything other than Unspecified, it will always select a random room from that zone, instead of the room type defined.
+  scp914_teleport_chances:
+    Rough:
+    - zone: Unspecified
+      room: LczClassDSpawn
+      offset:
+        x: 0
+        y: 0
+        z: 0
+      chance: 100
+      damage: 0
+  # A dictionary of random effects to apply to players when going through 914 on certain settings.
+  scp914_effect_chances:
+    Rough:
+    - effect: Amnesia
+      chance: 100
+      duration: 0
+  # Determines if 914 effects are exclusive, meaning only one can be applied each time a player is processed by 914.
+  scp914_effects_exclusivity: false
+  # Whether or not SCPs are immune to effects gained from 914.
+  scps_immune_to914_effects: false
+  # The frequency (in seconds) between ragdoll cleanups. Set to 0 to disable.
+  ragdoll_cleanup_delay: 0
+  # If ragdoll cleanup should only happen in the Pocket Dimension or not.
+  ragdoll_cleanup_only_pocket: false
+  # The frequency (in seconds) between item cleanups. Set to 0 to disable.
+  item_cleanup_delay: 0
+  # If item cleanup should only happen in the Pocket Dimension or not.
+  item_cleanup_only_pocket: false
+  # A list of all roles and their damage modifiers. The number here is a multiplier, not a raw damage amount. Thus, setting it to 1 = normal damage, 1.5 = 50% more damage, and 0.5 = 50% less damage.
+  role_damage_multipliers:
+    Scp173: 1
+  # A list of all Weapons and their damage modifiers. The number here is a multiplier, not a raw damage amount. Thus, setting it to 1 = normal damage, 1.5 = 50% more damage, and 0.5 = 50% less damage.
+  damage_multipliers:
+    E11Sr: 1
+  # A list of roles and how much health they should be given when they kill someone.
+  health_on_kill:
+    Scp173: 0
+    Scp93953: 10
+    Scp93989: 20
+  # A list of roles and what their default starting health should be.
+  health_values:
+    Scp173: 3200
+    NtfCaptain: 150
+  # If the plugin is enabled or not.
+  is_enabled: true
+RP Names:
+# Is the plugin enabled?
+  is_enabled: true
+  # Should people lose nick when made into a tutorial?
+  tutorial_nick: true
+  # Should Class-D be D-#### (true) or should it follow the other names with Title + Name (false)?
+  dbois_setting: true
+  # Should SCPs have their SCP as a name (true) or should they be hidden as a D-Class (false)?
+  s_c_p_setting: true
+  # Should nicknames reset on death?
+  death_reset: false
+  # Should a player be told their nickname?
+  show_nick: true
+  # Should a player have there real name after their nickname?
+  show_real_name: false
+  # A dictionary with classes and their title
+  class_titles:
+    ClassD: D-
+    Scientist: Dr.
+    FacilityGuard: 'Security Officer '
+    NtfCaptain: 'Commander '
+    NtfPrivate: 'Cadet '
+    NtfSergeant: 'Lieutenant '
+    NtfSpecialist: 'Field Agent '
+    ChaosConscript: 'Agent of Chaos '
+    Scp049: 'SCP-049 '
+    Scp0492: 'SCP-049-2 '
+    Scp079: 'SCP-079 '
+    Scp096: 'SCP-096 '
+    Scp106: 'SCP-106 '
+    Scp173: 'SCP-173 '
+    Scp93953: 'SCP-939-53 '
+    Scp93989: 'SCP-939-89 '
+  # The list of names to be given. (Leave empty for default, if you want to make your own list, look at readme) 
+  human_names: []
+class_broadcast_reborn:
+# Is enabled?
+  is_enabled: true
+  # Broadcast, Hint or Window (if not the correct type, it will hint)
+  broadcast_type: Hint
+  # the time you want bc or hint to be
+  bc_time: 7
+  # Set class bc text
+  class_bc:
+    ClassD: <color=#EE7600>Dboiiiiii</color>
+    Scp049: You are <color=#318504>Doctor</color>
+    Scp173: Haha matthew goes brrrr
+exiled_credits:
+# Is the plugin enabled?
+  is_enabled: true
+  # Info side - Badge, CustomPlayerInfo, FirstAvailable
+  mode: FirstAvailable
+  # Overrides badge if exists
+  badge_override: false
+  # Overrides Custom Player Info if exists
+  custom_player_info_override: false
+  # Whether or not the plugin should ignore a player's DNT flag. By default (false), players with DNT flag will not be checked for credit tags.
+  ignore_dnt_flag: false
+exiled_custom_items:
+# Indicates whether this plugin is enabled or not.
+  is_enabled: true
+  # The hint that is shown when someone pickups a custom item.
+  picked_up_hint:
+  # The broadcast content
+    content: >-
+      You have picked up a {0}
+
+      {1}
+    # The broadcast duration
+    duration: 10
+    # The broadcast type
+    type: Normal
+    # Indicates whether the broadcast should be shown or not
+    show: true
+  # The hint that is shown when someone selects a custom item.
+  selected_hint:
+  # The broadcast content
+    content: >-
+      You have selected a {0}
+
+      {1}
+    # The broadcast duration
+    duration: 5
+    # The broadcast type
+    type: Normal
+    # Indicates whether the broadcast should be shown or not
+    show: true
+  # Whether or not debug messages should be displayed in the server console.
+  debug: false
+exiled_custom_roles:
+# Whether or not the plugin is enabled.
+  is_enabled: true
+  # Whether or not debug messages should be shown.
+  debug: false
+  # The hint that is shown when someone gets a custom role.
+  got_role_hint:
+  # The broadcast content
+    content: >-
+      You have spawned as a {0}
+
+      {1}
+    # The broadcast duration
+    duration: 6
+    # The broadcast type
+    type: Normal
+    # Indicates whether the broadcast should be shown or not
+    show: true
+  # The hint that is shown when someone used a custom ability.
+  used_ability_hint:
+  # The broadcast content
+    content: >-
+      Ability {0} has been activated.
+
+      {1}
+    # The broadcast duration
+    duration: 5
+    # The broadcast type
+    type: Normal
+    # Indicates whether the broadcast should be shown or not
+    show: true
+exiled_events:
+# Indicates whether the plugin is enabled or not
+  is_enabled: true
+  # Indicates whether SCP-173 can be blocked or not by the tutorial
+  can_tutorial_block_scp173: true
+  # Indicates whether SCP-096 can be triggered or not by the tutorial
+  can_tutorial_trigger_scp096: true
+  # Indicates whether the name tracking is enabled or not
+  is_name_tracking_enabled: true
+  # Indicates whether the inventory should be dropped before being set as spectator, through commands or plugins
+  should_drop_inventory: true
+  # Indicates whether the blood can be spawned or not
+  can_spawn_blood: true
+  # Indicates whether configs have to be reloaded every round restart
+  should_reload_configs_at_round_restart: false
+  should_reload_translations_at_round_restart: false
+  # Indicates whether bans should be logged or not
+  should_log_bans: true
+  # Whether or not to log RA commands.
+  log_ra_commands: true
+exiled_permissions:
+# Indicates whether the debug should be shown or not
+  should_debug_be_shown: false
+  # The permissions folder path
+  folder: /home/steam/.config/EXILED/Configs
+  # The permissions full path
+  full_path: /home/steam/.config/EXILED/Configs/permissions.yml
+  # Indicates whether the plugin is enabled or not
+  is_enabled: true
+exiled_updater:
+# Indicates whether the plugin is enabled or not
+  is_enabled: true
+  # Indicates whether the debug should be shown or not
+  should_debug_be_shown: false
+  # Indicates whether testing releases have to be downloaded or not
+  should_download_testing_releases: false
+  # Indicates which assemblies should be excluded from the update
+  exclude_assemblies: []
+respawn_timer:
+# Is the plugin enabled.
+  is_enabled: true
+  # Should debug messages be shown in a server console.
+  show_debug_messages: false
+  # Should a timer be lower or higher on the screen. (values from 0 to 14, 0 - very high, 14 - very low)
+  text_lowering: 8
+  # Should a timer show an exact number of minutes?
+  show_minutes: true
+  # Should a timer show an exact number of seconds?
+  show_seconds: true
+  # Should a timer be only shown, when a spawnning sequence has begun? (NTF Helicopter / Chaos Car arrives)
+  show_timer_only_on_spawn: false
+  # Should number of spectators be shown?
+  show_number_of_spectators: true
+  # Should the NTF and CI respawn tickets be shown?
+  show_tickets: true
+scp008_x:
+  is_enabled: true
+  # Only enable this if you're looking for bug sources!
+  debug_mode: false
+  # Percent chance to create infection.
+  infection_chance: 100
+  # Percent chance to successfully cure.
+  cure_chance: 50
+  # Allow SCP-049 to instantly revive targets?
+  buff_doctor: false
+  # Base zombie health.
+  zombie_health: 500
+  # Max zombie health.
+  max_zombie_health: 700
+  # How much AHP should be given to Zombies?
+  scp008_buff: 10
+  # 008x zombie starting Ahp (Shield).
+  starting_ahp: 100
+  # How much AHP should zombies stop earning at?
+  max_ahp: 100
+  # Whether to have a public cassie announcement.
+  cassie_announce: true
+  # Announcement for server.
+  announcement: SCP 0 0 8 containment breach detected . Allremaining
+  # How much damage 008 zombie does per hit.
+  zombie_damage: 24
+  # Text displayed to players after they've been infected
+  infection_alert: You've been infected! Use SCP-500 or a medkit to be cured!
