@@ -7,19 +7,25 @@ RUN dpkg --add-architecture i386; apt-get update;  apt-get install -y libstdc++6
 ENV GAME=l4d2
 ENV APP_ID=222860
 
-RUN mkdir -p /steam/${GAME}/.cache/ \
-  && touch /steam/${GAME}/.cache/empty
 WORKDIR /steam/${GAME}/
-COPY .cache .
 
-RUN chown -R steam /steam/${GAME}/ \
-  && mv .cache/* . \
-  && rm -fr .cache
-
-COPY start.sh .
+RUN chown -R steam /steam/${GAME}/
 
 USER steam
 
-RUN /steam/steamcmd_linux/steamcmd.sh +login anonymous +force_install_dir ../${GAME} +app_update ${APP_ID} +quit
+RUN /steam/steamcmd_linux/steamcmd.sh +login anonymous +force_install_dir /steam/${GAME} +app_update ${APP_ID} +quit
+ARG CACHE_DATE
+RUN /steam/steamcmd_linux/steamcmd.sh +login anonymous +force_install_dir /steam/${GAME} +app_update ${APP_ID} +quit
+
+COPY update_server_details.sh .
+COPY zip-utils.sh .
+
+COPY server.cfg left4dead2/cfg/server.cfg
+
+COPY start.sh .
+
+USER root
+RUN chown steam:steam left4dead2/cfg/server.cfg
+USER steam
 
 ENTRYPOINT ["./start.sh"]

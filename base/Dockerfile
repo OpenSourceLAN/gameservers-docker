@@ -1,12 +1,12 @@
-ARG DISTRO="16.04"
+ARG DISTRO="20.04"
 
 FROM ubuntu:${DISTRO}
 
 ARG TZ="Etc/UTC"
-RUN sed -i 's/archive.ubuntu.com/au.archive.ubuntu.com/' /etc/apt/sources.list
 RUN apt-get update \
     && apt-get dist-upgrade -y \
     && apt-get install -y \
+        git \
         unzip \
         p7zip-full\
         curl\
