@@ -1,19 +1,33 @@
 FROM base
 
-RUN apt-get install -y libsdl1.2debian
-RUN apt-get install -y libfontconfig1
+RUN apt-get update \
+  && apt-get install -y libsdl1.2debian libfontconfig1 liblzo2-2 libfluidsynth2 libsdl2-2.0-0 \
+  && adduser openttd \
+  && mkdir -p /tmp \
+  && chown -R openttd:openttd /tmp \
+  && mkdir -p /home/openttd/.openttd/save \
+  && chown -R openttd:openttd /home
 
-RUN adduser openttd && mkdir -p /openttd/extract && chown -R openttd:openttd /openttd
-WORKDIR /openttd
+WORKDIR /tmp
 
-ADD opengfx*.zip openmsx*.zip opensfx*.zip openttd*.tar.gz /openttd/
-RUN mv openttd-*-linux-generic-amd64/* .
-RUN unzip openmsx*.zip -d /openttd/extract/
-RUN unzip opensfx*.zip -d /openttd/extract/
-RUN unzip opengfx*.zip -d /openttd/extract/ && tar -xf /openttd/extract/opengfx*.tar -C /openttd/extract/
-RUN mv --no-clobber /openttd/extract/*/* /openttd/baseset/
+ARG DISTRO="focal"
+ADD download.sh .
+RUN ./download.sh
 
-RUN chown -R openttd:openttd /openttd
+USER root
+RUN dpkg -i *.deb \
+  && mkdir -p /usr/share/games/openttd/baseset/opengfx/ \
+  && unzip 'opengfx*.zip' \
+  && ls -Chal \
+  && tar -C /usr/share/games/openttd/baseset/opengfx/ -xf opengfx*.tar \
+  && rm -fr *.zip *.tar *.deb
+
 USER openttd
 
-CMD ["./start-openttd.sh"]
+WORKDIR /usr/games
+
+ADD start.sh .
+
+VOLUME [ "/home/openttd/.openttd/save" ]
+
+ENTRYPOINT ["./start.sh"]
