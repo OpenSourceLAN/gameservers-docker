@@ -1,6 +1,6 @@
 FROM base
 
-RUN apt-get install -y libxml2 libxml2-dev
+RUN apt-get install -y libxml2 libxml2-dev pkg-config
 RUN apt-get install -y build-essential xml2
 
 ADD armagetronad-*.tbz /
