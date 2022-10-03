@@ -8,6 +8,6 @@ RUN ./steamcmd.sh +login anonymous +force_install_dir ../quake-live +app_update 
 
 WORKDIR /steam/quake-live/
 
-ADD start*.sh /steam/quake-live/start-quake-live.sh
+ADD start*.sh /steam/quake-live/
 
 CMD ["./start-quake-live.sh"]
