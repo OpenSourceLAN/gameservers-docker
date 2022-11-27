@@ -1,9 +1,11 @@
 FROM wine
 
-USER root
-
-
 USER steam
+ENV DISPLAY :99
+
+WORKDIR /home/steam
+RUN winecfg
+
 WORKDIR /steam/steamcmd_linux
 RUN mkdir -p /steam/wreckfest
 

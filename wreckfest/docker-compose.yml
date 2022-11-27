@@ -1,0 +1,11 @@
+version: '3.0'
+services:
+  wreckfest:
+    image: wreckfest:latest
+    container_name: wreckfest
+    ports:
+      - 27015:27015/tcp
+      - 27015:27015/udp
+      - 27016:27016/udp
+      - 33540:33540/udp
+    restart: unless-stopped
